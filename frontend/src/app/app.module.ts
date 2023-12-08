@@ -8,6 +8,8 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
 import { ItemShopComponent } from './pages/item-shop/item-shop.component';
 import { ItemPreviewComponent } from './pages/item-shop/item-preview/item-preview.component';
+import { TvMenuComponent } from './pages/tv/tv-menu/tv-menu.component';
+import { TvMenuButtonComponent } from './pages/tv/tv-menu/tv-menu-button/tv-menu-button.component';
 
 const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
 @NgModule({
@@ -15,7 +17,9 @@ const socketIoConfig: SocketIoConfig = { url: environment.host, options: {} };
     AppComponent,
     TasksComponent,
     ItemShopComponent,
-    ItemPreviewComponent
+    ItemPreviewComponent,
+    TvMenuComponent,
+    TvMenuButtonComponent
   ],
   imports: [
     SocketIoModule.forRoot(socketIoConfig),

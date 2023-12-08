@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Slide } from './pages/tv/tv-shopslist/tv-shoplist.interface';
 
 @Component({
   selector: 'app-root',

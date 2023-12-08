@@ -1,0 +1,15 @@
+.container{
+    height: 70vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: solid 2px cyan;
+    max-height: inherit;
+    padding: 0;
+    margin: 0;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+}
+.container::-webkit-scrollbar {
+    display: none;
+}

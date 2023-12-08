@@ -1,0 +1,33 @@
+@import '../../../../global/theme/overflow';
+
+.container{
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.buttons_container{
+    border: solid 2px green;
+    width: 100%;
+    padding: 5px;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    
+    button{
+        width: 15vw;
+    }
+}
+
+.scroll_y_nobar{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.scroll_y_nobar::-webkit-scrollbar {
+    display: none;
+}

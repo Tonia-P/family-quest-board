@@ -1,0 +1,17 @@
+
+@import '../../../../global/theme/colors';
+
+.container{
+    width: 100%;
+    height: 70px;
+    border: solid 2px black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    background-color: $main200;
+
+    .left_side{
+        padding: 5px 0px;
+    }
+}

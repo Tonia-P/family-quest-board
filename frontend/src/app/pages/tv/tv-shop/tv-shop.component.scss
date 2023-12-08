@@ -1,0 +1,35 @@
+.main-container{
+  max-height: 90vh;
+  height: fit-content;
+  width: 90vw;
+  margin-top: 7vh;
+  overflow: hidden;
+
+  margin-right: 5vw;
+  margin-left: 5vw;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+    .left, .right{
+        width: 44vw;
+        height: 87vh;
+        border: solid 2px coral;
+
+        .control{
+          width: 3vw;
+        }
+    }
+    .right{
+      width: 48vw;
+      display: flex;
+      direction: row;
+      justify-content: space-between;
+      .items{
+        width: 100%;
+      }
+    }
+    .left{
+      width: 40vw;
+    }
+}
