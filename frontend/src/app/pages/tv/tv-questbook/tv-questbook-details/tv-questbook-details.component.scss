@@ -1,7 +1,8 @@
 @import '../../../../global/theme/overflow';
+@import'../../../../global/theme/colors';
 
 .container{
-    height: 70vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -9,15 +10,13 @@
 
 
 .buttons_container{
-    border: solid 2px green;
     width: 100%;
     padding: 5px;
-    height: 50px;
     display: flex;
     justify-content: space-evenly;
     
-    button{
-        width: 15vw;
+    .btn{
+        width: 100%;
     }
 }
 
@@ -26,6 +25,30 @@
     overflow-x: hidden;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+
+.details{
+    
+    h2{
+        background-color: $orange500;
+        padding: .8vw;
+        height: 4vw;
+        font-size: 2vw;
+        color: white;
+    }
+    h3{
+        border-bottom: 1px solid black;
+    }
+    p{
+        font-size: 1.2em;
+        font-weight: 400;
+    }
+    .rewards-title{
+        padding: .5vw;
+        height: 3vw;
+        margin-top: 40px;
+        font-size: 1.5vw;
+    }
 }
 
 .scroll_y_nobar::-webkit-scrollbar {

@@ -4,12 +4,12 @@
 .container{
     width: 100%;
     height: 70px;
-    border: solid 2px black;
+    border: solid 2px $main200;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 5px;
-    background-color: $main200;
+    background-color: $main100;
 
     .left_side{
         padding: 5px 0px;

@@ -15,13 +15,14 @@ import { TvQuestbookComponent } from './tv-questbook/tv-questbook.component';
 import { TvShopItemComponent } from './tv-shop/tv-shop-item/tv-shop-item.component';
 import { TvShopItemslistComponent } from './tv-shop/tv-shop-itemslist/tv-shop-itemslist.component';
 import { TvShopDescriptionComponent } from './tv-shop/tv-shop-description/tv-shop-description.component';
-
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    TvRoutingModule
+    TvRoutingModule,
+    SharedModule
   ],
   declarations: [
     TvComponent,
@@ -36,7 +37,7 @@ import { TvShopDescriptionComponent } from './tv-shop/tv-shop-description/tv-sho
     TvQuestbookDetailsComponent,
     TvShopItemComponent,
     TvShopItemslistComponent,
-    TvShopDescriptionComponent
+    TvShopDescriptionComponent,
   ]
 })
 export class TvModule { }

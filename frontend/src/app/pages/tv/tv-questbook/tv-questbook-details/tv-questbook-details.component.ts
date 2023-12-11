@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { GameButtonComponent } from 'src/app/pages/shared/game-button/game-button.component';
 @Component({
   selector: 'app-tv-questbook-details',
   templateUrl: './tv-questbook-details.component.html',
@@ -12,4 +12,7 @@ export class TvQuestbookDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onButtonCLick(){
+    console.log("Kappa")
+  }
 }

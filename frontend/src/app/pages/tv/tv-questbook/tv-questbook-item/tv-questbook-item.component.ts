@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-tv-questbook-item',
   templateUrl: './tv-questbook-item.component.html',

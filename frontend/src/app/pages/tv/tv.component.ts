@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Slide } from './tv-shopslist/tv-shoplist.interface';
+import { SharedModule } from '../shared/shared.module';
 
 @Component({
   selector: 'app-tv',

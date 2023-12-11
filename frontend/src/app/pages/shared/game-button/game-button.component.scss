@@ -1,0 +1,21 @@
+@import '../../../global/theme/colors';
+
+button{
+    width:inherit;
+    border-radius: 20px;
+    padding: 20px;
+    text-wrap:wrap;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.green-button{
+    background-color: $teal400;
+    border: 4px solid $sky600;
+}
+
+.red-button{
+    background-color: $rose500;
+    border: 4px solid $pink800;
+}

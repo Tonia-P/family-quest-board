@@ -1,5 +1,6 @@
 <div class="container">
-    <div class="scroll_y_nobar">
+    <div class="scroll_y_nobar details">
+        <h2>Quest title here</h2>
         <h3>Target</h3>
         <p>Lorem ipsum dolor sit amet,
             consectetur adipiscing elit. 
@@ -14,13 +15,15 @@
 
         <h3>Participants</h3>
 
+        <h2 class="rewards-title">Rewards</h2>
+
         <div>Rewards</div>
     </div>
     
 
 
     <div class="buttons_container">
-        <button>Complete Quest</button>
-        <button>Fail Quest</button>
+        <app-game-button class="btn" [label]="'Complete Quest'" [color]="'green'" [onButtonClick]="onButtonCLick">Complete</app-game-button>
+        <app-game-button class="btn" [label]="'Fail Quest'" [color]="'red'" [onButtonClick]="onButtonCLick">Complete</app-game-button>
     </div>
 </div>
