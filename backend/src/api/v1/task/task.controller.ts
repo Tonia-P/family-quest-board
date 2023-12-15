@@ -37,12 +37,12 @@ export class TaskController extends ResourceController<ITask>{
      */
     getTasks = async (req: Request, res: Response) => {
         this.logger.debug('getTasks request');
-        // you can pre-process the request here before passing it to the super class method
-        const allTasks = await this.getAll(req, res);
-        // you can process the data retrieved here before returning it to the client
-        return res
-            .status(StatusCodes.OK)
-            .json(allTasks);
+        try {
+            const allTasks = await TaskModel.find({}).populate('participants'); // Use populate() to populate participants field with user objects
+            return res.status(StatusCodes.OK).json(allTasks);
+        } catch (error: any) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+        }
     }
 
     /**
@@ -99,12 +99,15 @@ export class TaskController extends ResourceController<ITask>{
      */
     getTaskById = async (req: Request, res: Response) => {
         this.logger.debug('getTaskById request');
-        // you can pre-process the request here before passing it to the super class method
-        const task = await this.getOne(req.params.id, req, res);
-
-        // you can process the data retrieved here before returning it to the client
-        return res
-            .status(StatusCodes.OK)
-            .json(task);
+        try {
+            const taskId = req.params.id;
+            const task = await TaskModel.findById(taskId).populate('participants'); // Use populate() to populate participants field with user objects
+            if (!task) {
+                return res.status(StatusCodes.NOT_FOUND).json({ message: 'Task not found' });
+            }
+            return res.status(StatusCodes.OK).json(task);
+        } catch (error: any) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+        }
     }
 }

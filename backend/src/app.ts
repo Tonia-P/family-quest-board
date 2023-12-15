@@ -67,8 +67,10 @@ export class App {
         // all other routes should return 405 error (Method Not Allowed)
         application
             .route('/*')
-            .get((req, res) => { throw new MethodNotAllowed(); });
-
+            .get((req, res) => {
+                throw new MethodNotAllowed();
+                console.log("after routes");
+                });
         // global error handler
         // !it has to be the last
         application.use(this.handlerError);
