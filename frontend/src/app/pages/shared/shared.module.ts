@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameButtonComponent } from './game-button/game-button.component';
 import { PopupComponent } from './popup/popup.component';
-import { ParticipantsSetComponent } from './participants-set/participants-set.component';
+import { RewardCardComponent } from './reward-card/reward-card.component';
 
 
 
@@ -10,15 +10,15 @@ import { ParticipantsSetComponent } from './participants-set/participants-set.co
   declarations: [
     GameButtonComponent,
     PopupComponent,
-    ParticipantsSetComponent
+    RewardCardComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
     GameButtonComponent,
-    ParticipantsSetComponent,
-    PopupComponent
+    PopupComponent,
+    RewardCardComponent
   ]
 })
 export class SharedModule { }
