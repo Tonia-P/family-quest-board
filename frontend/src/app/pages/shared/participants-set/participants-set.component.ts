@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-participants-set',
   templateUrl: './participants-set.component.html',
-  styleUrls: ['./participants-set.component.css'],
+  styleUrls: ['./participants-set.component.scss'],
 })
 export class ParticipantsSetComponent {
   @Input() images: string[];
