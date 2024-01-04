@@ -1,0 +1,17 @@
+.container{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid blue;
+
+    .item:last-of-type{
+        border-left: blue;
+        background-color: brown;
+    }
+    .item>*:not(:last-child){
+        border-right: blue;
+    }
+}

@@ -1,0 +1,20 @@
+.container{
+    height: 55px;
+    width: 100%;
+    background-color: white;
+    font-size: .8em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    img{
+        height: 30px;
+    }
+
+    .isLast{
+        border-left: blue;
+    }
+
+}

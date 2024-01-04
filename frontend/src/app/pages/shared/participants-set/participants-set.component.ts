@@ -14,8 +14,6 @@ export class ParticipantsSetComponent {
       'https://via.placeholder.com/200',
       'https://via.placeholder.com/150',
       'https://via.placeholder.com/200',
-      'https://via.placeholder.com/150',
-      'https://via.placeholder.com/200',
     ];
   }
 }

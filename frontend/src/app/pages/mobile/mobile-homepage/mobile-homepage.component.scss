@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    align-items: center;
+    .title{
+        width: 90vw;
+    }
+    .questslist{
+        margin-top: 20px;
+        width: 100vw;
+    }
+    app-game-button{
+        margin-top: 20px;
+        width: 80vw;
+    }
+}
