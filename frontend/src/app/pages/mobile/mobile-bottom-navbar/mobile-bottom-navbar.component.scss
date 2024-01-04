@@ -7,11 +7,8 @@
     flex-direction: row;
     border-top: 2px solid blue;
 
-    .item:last-of-type{
-        border-left: blue;
-        background-color: brown;
+    > div{
+        border-left: 2px solid blue;
     }
-    .item>*:not(:last-child){
-        border-right: blue;
-    }
+
 }

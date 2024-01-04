@@ -8,13 +8,13 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    border: 2px solid blue;
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 0;
 
     img{
         height: 30px;
-    }
-
-    .isLast{
-        border-left: blue;
     }
 
 }

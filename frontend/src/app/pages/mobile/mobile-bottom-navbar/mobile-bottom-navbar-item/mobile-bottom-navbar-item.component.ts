@@ -6,5 +6,4 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./mobile-bottom-navbar-item.component.scss']
 })
 export class MobileBottomNavbarItemComponent {
-  @Input() isLast:boolean = false;
 }

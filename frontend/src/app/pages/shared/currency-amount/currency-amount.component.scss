@@ -1,9 +1,11 @@
+@import '../../../global/theme/colors';
+
 .container{
     padding: 3px 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: brown;
+    background-color: $main600;
     color: white;
     flex-direction: row;
     border: 1px solid black;

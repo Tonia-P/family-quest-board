@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-currency-amount',
@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class CurrencyAmountComponent {
 
+  @Input() amount: number = 0;
 }
