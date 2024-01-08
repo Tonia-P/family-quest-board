@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "backend/dist/index.js",
+            "preLaunchTask": "tsc: build - backend/tsconfig.json",
+            "env": {
+                "DB_HOST": "localhost",
+                "DB_PORT": "27000",
+                "DB_ROOT_USERNAME": "ami-fullstack-admin",
+                "DB_ROOT_PASSWORD": "i7iPL2ABWzC0J3euvEaKATnU8D9DKZCg",
+                "DB_NAME": "ami-fullstack",
+                "ENVIRONMENT": "development",
+                "EXPOSED_PORT": "8081",
+                "PORT": "8080",
+            }
+        }
+    ]
+}

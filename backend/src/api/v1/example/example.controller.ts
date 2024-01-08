@@ -1,8 +1,13 @@
-import { Request, Response, NextFunction, Router } from 'express';
+import { Request, Response, Router } from 'express';
 import { Logger } from '../../shared/utils/logger';
 
 export class ExampleController {
     private logger: Logger = new Logger();
+
+    constructor() {
+        this.getExample = this.getExample.bind(this); // Binding getExample to the instance of ExampleController
+    }
+
     /**
      * Apply all routes for example
      *
@@ -10,14 +15,12 @@ export class ExampleController {
      */
     public applyRoutes(): Router {
         const router = Router();
-        router
-            .get('/hello', this.getExample);
-
+        router.get('/hello', this.getExample);
         return router;
     }
 
     /**
-     * Sens a example message back as a response
+     * Send an example message back as a response
      */
     public getExample(req: Request, res: Response) {
         this.logger.debug('getExample request');
