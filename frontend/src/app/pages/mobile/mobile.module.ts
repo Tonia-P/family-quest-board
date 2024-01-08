@@ -4,14 +4,14 @@ import { CommonModule } from '@angular/common';
 import { MobileRoutingModule } from './mobile-routing.module';
 import { MobileComponent } from './mobile.component';
 import { MobileHomepageComponent } from './mobile-homepage/mobile-homepage.component';
-import { MobileQuestDetailsComponent } from './mobile-quest-details/mobile-quest-details.component';
-import { MobileAddQuestComponent } from './mobile-add-quest/mobile-add-quest.component';
+import { MobileQuestDetailsComponent } from './mobile-quest/mobile-quest-details/mobile-quest-details.component';
 import { MobileShopslistComponent } from './mobile-shopslist/mobile-shopslist.component';
 import { MobileShopComponent } from './mobile-shop/mobile-shop.component';
 import { MobileHeaderComponent } from './mobile-header/mobile-header.component';
 import { SharedModule } from '../shared/shared.module';
 import { MobileBottomNavbarComponent } from './mobile-bottom-navbar/mobile-bottom-navbar.component';
 import { MobileBottomNavbarItemComponent } from './mobile-bottom-navbar/mobile-bottom-navbar-item/mobile-bottom-navbar-item.component';
+import { MobileQuestComponent } from './mobile-quest/mobile-quest.component';
 
 
 @NgModule({
@@ -19,12 +19,12 @@ import { MobileBottomNavbarItemComponent } from './mobile-bottom-navbar/mobile-b
     MobileComponent,
     MobileHomepageComponent,
     MobileQuestDetailsComponent,
-    MobileAddQuestComponent,
     MobileShopslistComponent,
     MobileShopComponent,
     MobileHeaderComponent,
     MobileBottomNavbarComponent,
-    MobileBottomNavbarItemComponent
+    MobileBottomNavbarItemComponent,
+    MobileQuestComponent
   ],
   imports: [
     CommonModule,
