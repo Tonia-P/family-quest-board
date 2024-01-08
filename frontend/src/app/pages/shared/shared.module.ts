@@ -5,6 +5,7 @@ import { PopupComponent } from './popup/popup.component';
 import { ParticipantsSetComponent } from './participants-set/participants-set.component';
 import { CurrencyAmountComponent } from './currency-amount/currency-amount.component';
 import { QuestItemComponent } from './quest-item/quest-item.component';
+import { RewardCardComponent } from './reward-card/reward-card.component';
 
 
 
@@ -14,7 +15,8 @@ import { QuestItemComponent } from './quest-item/quest-item.component';
     PopupComponent,
     ParticipantsSetComponent,
     CurrencyAmountComponent,
-    QuestItemComponent
+    QuestItemComponent,
+    RewardCardComponent
   ],
   imports: [
     CommonModule
@@ -24,7 +26,9 @@ import { QuestItemComponent } from './quest-item/quest-item.component';
     ParticipantsSetComponent,
     CurrencyAmountComponent,
     QuestItemComponent,
-    PopupComponent
+    PopupComponent,
+    PopupComponent,
+    RewardCardComponent
   ]
 })
 export class SharedModule { }

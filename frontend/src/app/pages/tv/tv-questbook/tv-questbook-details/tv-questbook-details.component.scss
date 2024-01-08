@@ -54,3 +54,16 @@
 .scroll_y_nobar::-webkit-scrollbar {
     display: none;
 }
+
+.dificulty{
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    align-items: center;
+    margin-bottom: 10px;
+    img{
+        aspect-ratio: 1 / 1;
+        width: 32px;
+        margin-left: 10px;
+    }
+}
