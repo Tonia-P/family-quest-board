@@ -1,0 +1,14 @@
+.container{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid blue;
+
+    > div{
+        border-left: 2px solid blue;
+    }
+
+}

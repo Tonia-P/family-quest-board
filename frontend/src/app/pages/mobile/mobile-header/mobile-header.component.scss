@@ -1,0 +1,20 @@
+.container{
+    height: 50px;
+    display: flex;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    .nav{
+        font-weight: bold;
+        font-size: large;
+        display: flex;
+        align-items: baseline;
+        div{
+            font-weight: bolder;
+            font-size: larger;
+        }
+    }
+}

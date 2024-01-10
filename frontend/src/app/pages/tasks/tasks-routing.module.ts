@@ -8,8 +8,8 @@ const routes: Routes = [
     path: '',
     component: TasksComponent,
     children: [
-      { path: 'view', component: TasksViewComponent },
-      { path: '**', redirectTo: 'view', pathMatch: 'full' },]
+      { path: 'home', component: TasksViewComponent },
+      { path: '**', redirectTo: 'home', pathMatch: 'full' },]
   },
 
 
