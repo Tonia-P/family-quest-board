@@ -251,7 +251,8 @@ export class TaskController extends ResourceController<ITask>{
 
     pingOtherDevicesForTask = async (req: Request, res: Response) => {
         try{
-            SocketsService.publish(req.body.event, req.body.message);
+            const socket = new SocketsService();
+            socket.publish(req.body.event, req.body.message);
         }
         catch(error: any){
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
