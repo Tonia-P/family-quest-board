@@ -40,35 +40,11 @@
 
     flex-direction: column;
     overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    .quests, .details{
-        width: 44%;
-        height: 80vh;
-        display: flex;
-        .type-img{
-
-            position: absolute;
-            z-index: -2;
-            left: -4%;
-            max-width: 55%;
-            max-height: 20%;
-        }
-        
-        flex-direction: column;
-        overflow: hidden;
-        .quest_list_title{
-            height: 7vh;
-            font-size: 2.5vw;
-            margin-bottom: 1vh;
-            color: white;
-        }
-        
-    }
-    .details{
-        width: 47%;
+    .quest_list_title {
+      height: 7vh;
+      font-size: 2.5vw;
+      color: white;
+      margin-bottom: 1vh;
     }
   }
   .details {

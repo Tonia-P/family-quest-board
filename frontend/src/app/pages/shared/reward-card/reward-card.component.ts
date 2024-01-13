@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class RewardCardComponent {
   @Input() amount: number = 999;
-  @Input() image: string = "milk";
+  @Input() image: string = "dia";
   @Input() color: string = "gold"
  
   constructor() { 
