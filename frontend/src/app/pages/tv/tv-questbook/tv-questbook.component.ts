@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Quest } from 'src/app/pages/shared/interfaces/quest';
 
 @Component({
   selector: 'app-tv-questbook',

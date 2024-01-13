@@ -1,26 +1,7 @@
 <div class="container">
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
-    <app-tv-questbook-item></app-tv-questbook-item>
+
+    <div *ngFor="let quest of quests">
+        <app-tv-questbook-item/>
+    </div>
+    <app-tv-questbook-item [quest]="example_quest"/>
 </div>

@@ -1,22 +1,24 @@
 <div class="container">
     <div class="scroll_y_nobar details">
-        <h2>{{ title }}</h2>
+        <h2>{{ quest.title }}</h2>
         <h3>Target</h3>
-        <p>{{ desc }} 
+        <p>{{ quest.description }} 
         </p>
         <div class="dificulty">
             <div class="dif-text">
                 Dificulty:
             </div>
-            <div *ngFor="let i of [].constructor(2)">
+            <div *ngFor="let i of [].constructor(quest.difficulty)">
                 <img src="../../../../../assets/other/diff.png" />
             </div>
         </div>
 
         <h3>Participants</h3>
-        <app-participants-set/>
+        <app-participants-set [images]="quest.participants"/>
         
         <div>Rewards</div>
+
+        <app-reward-card [amount]="quest.reward"/>
     </div>
     
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-participants-set',
@@ -6,14 +6,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./participants-set.component.scss', ],
 })
 export class ParticipantsSetComponent {
-  @Input() images: string[];
+  @Input() images: string[] = [];
+  
+//   @Output() imagesE= new EventEmitter<string[]>();
 
-  constructor() {
-    this.images = [
-      '../../../../assets/family/dad.png',
-      '../../../../assets/family/mother.png',
-      '../../../../assets/family/daughter.png',
-      '../../../../assets/family/son.png',
-    ];
-  }
+
+//   onArrayChanged() {
+//     this.imagesE.emit(this.images);
+//     console.log(this.images)
+//  }
+
 }

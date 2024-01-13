@@ -8,10 +8,11 @@ import { IUser } from '../User/User.model';
 export interface ITask extends Document {
   title: string;
   description: string;
-  type: string;
+  type: "daily" | "weekly" | "onetime";
   deadline: Date;
   difficulty: number;
   participants: IUser['_id'][];
+  reward: number;
 
 }
 
@@ -24,7 +25,8 @@ const taskSchema = new Schema(
     type: { type: String, required: true },
     deadline: { type: Date, required: false },
     difficulty: { type: Number, required: true },
-    participants: [{ type: Schema.Types.ObjectId, ref: 'User', required: false }]
+    participants: [{ type: Schema.Types.ObjectId, ref: 'User', required: false }],
+    reward: { type: Number, required: true}
   },
   { ...DefaultSchemaOptions }
 );

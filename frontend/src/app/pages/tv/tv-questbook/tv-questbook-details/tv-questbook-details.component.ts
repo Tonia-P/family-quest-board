@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameButtonComponent } from 'src/app/pages/shared/game-button/game-button.component';
+import { Quest } from 'src/app/pages/shared/interfaces/quest';
 @Component({
   selector: 'app-tv-questbook-details',
   templateUrl: './tv-questbook-details.component.html',
@@ -7,10 +8,20 @@ import { GameButtonComponent } from 'src/app/pages/shared/game-button/game-butto
 })
 export class TvQuestbookDetailsComponent implements OnInit {
 
-  @Input() title: string = "Quest title here";
-  @Input() desc: string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis nunc gravida risus blandit. Lorem duis scelerisque risus convallis tempor velit dis. Lorem duis scelerisque r isus convallis tempor velit dis.";
-  @Input() dificulty: number = 1;
-  @Input() participants: object = {};
+  @Input() quest: Quest = {
+    _id: "9",
+    title: "Kapp Kapp",
+    type: "daily",
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing el
+    sed do eiusmod tempor incididunt ut labore et dolore magna al
+    la.`,
+    difficulty: 1,
+    reward: 50,
+    participants:[
+      'daughter',
+      'son'
+    ]
+  }
 
   constructor() { }
 
