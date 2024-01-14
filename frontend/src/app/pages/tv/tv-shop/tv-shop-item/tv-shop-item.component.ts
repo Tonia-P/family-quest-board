@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Item } from 'src/app/pages/shared/interfaces/item';
 
 @Component({
   selector: 'app-tv-shop-item',
@@ -6,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tv-shop-item.component.scss']
 })
 export class TvShopItemComponent implements OnInit {
+
+  @Input() item: Item = {
+    _id: "2",
+    name: 'Alpha potion',
+    description: 'AAAAAAAAAAA',
+    price: 200,
+    selected: false
+  }
 
   constructor() { }
 

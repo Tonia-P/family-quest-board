@@ -1,6 +1,11 @@
 <div class="container">
-    <img src="image_url" alt="Image">
-    <h2>Title</h2>
-    <p>Description goes here. It can be short or long. The image above is a placeholder for a real image. </p>
-    <button>Buy</button>
-   </div>
+    <div>
+        <img src="../../../../../assets/currency/coin.png" alt="Image">
+        <h2>{{ item.name }}</h2>
+        <p>Description goes here. It can be short or long. The image above is a placeholder for a real image. </p>
+    </div>
+    <div>
+        <app-game-button [label]="'BUY'"/>
+
+    </div>
+</div>

@@ -14,9 +14,7 @@ export class ItemShopComponent implements OnInit {
   protected selectedItem: ItemModel = new ItemModel({
     name: "",
     description: "",
-    image: "",
     price: -1,
-    rating: -1,
     isAvailable: false,
     selected: false
   });

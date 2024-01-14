@@ -1,8 +1,7 @@
 <div class="container">
-    <app-tv-shop-item></app-tv-shop-item>
-    <app-tv-shop-item></app-tv-shop-item>
-    <app-tv-shop-item></app-tv-shop-item>
-    <app-tv-shop-item></app-tv-shop-item>
-    <app-tv-shop-item></app-tv-shop-item>
-    <app-tv-shop-item></app-tv-shop-item>
+    <div *ngFor="let item of items">
+        <app-tv-shop-item [item]="item"/>
+    </div>
+    <app-tv-shop-item [item]="Example_item"/>
+    
 </div>

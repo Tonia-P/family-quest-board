@@ -1,6 +1,7 @@
 export interface Item {
-    id: string;
+    _id: string;
     name: string;
     description?: string|null;
     price: number;
+    selected: boolean;
 }

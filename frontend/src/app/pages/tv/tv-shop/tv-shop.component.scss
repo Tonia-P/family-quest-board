@@ -14,10 +14,12 @@
     .left, .right{
         width: 44vw;
         height: 87vh;
-        border: solid 2px coral;
+        background-color: bisque;
 
         .control{
           width: 3vw;
+          background-color: rgba(0, 0, 0, 0);
+          border: 0px;
         }
     }
     .right{

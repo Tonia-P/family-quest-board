@@ -7,7 +7,6 @@ import { DefaultSchemaOptions } from '../../../models/shared';
 export interface IItem extends Document {
   name: string;
   description: string;
-  image: string;
   price: number;
   selected: boolean;
 }
