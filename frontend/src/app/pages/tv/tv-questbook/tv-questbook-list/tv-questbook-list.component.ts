@@ -17,21 +17,6 @@ export class TvQuestbookListComponent implements OnInit {
     private socketService: SocketsService
   ) { }
 
-  @Input() example_quest: Quest = {
-    _id: "9",
-    title: "Example from list",
-    type: "daily",
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing el
-    sed do eiusmod tempor incididunt ut labore et dolore magna al
-    la.`,
-    difficulty: 1,
-    reward: 50,
-    participants:[
-      'daughter',
-      'son'
-    ]
-  }
-
   ngOnInit(): void {
     this.getAllTasks();
 
@@ -39,10 +24,12 @@ export class TvQuestbookListComponent implements OnInit {
     this.socketService.subscribe("tasks_update", (data: any) => {
       this.getAllTasks();
     });
+
   }
 
   private getAllTasks(): void {
     this.tasksService.getAll().subscribe((result) => {
+      console.log(result);
       this.quests = result;
     });
   }

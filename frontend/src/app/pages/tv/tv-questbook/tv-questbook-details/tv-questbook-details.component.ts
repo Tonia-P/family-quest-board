@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameButtonComponent } from 'src/app/pages/shared/game-button/game-button.component';
+import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { Quest } from 'src/app/pages/shared/interfaces/quest';
 @Component({
   selector: 'app-tv-questbook-details',
@@ -7,6 +9,13 @@ import { Quest } from 'src/app/pages/shared/interfaces/quest';
   styleUrls: ['./tv-questbook-details.component.scss']
 })
 export class TvQuestbookDetailsComponent implements OnInit {
+
+  @Input() quests: Quest[] = [];
+  
+  constructor(
+    private tasksService: TasksService,
+    private socketService: SocketsService
+  ) { }
 
   @Input() quest: Quest = {
     _id: "9",
@@ -23,12 +32,24 @@ export class TvQuestbookDetailsComponent implements OnInit {
     ]
   }
 
-  constructor() { }
-
   ngOnInit(): void {
+    this.getAllTasks();
+
+    // Susbcribe to socket event and set callback
+    this.socketService.subscribe("tasks_update", (data: any) => {
+      this.getAllTasks();
+    });
   }
 
   onButtonCLick(){
     console.log("Kappa")
+  }
+
+  private getAllTasks(): void {
+    this.tasksService.getAll().subscribe((result) => {
+      console.log(result);
+      this.quests = result;
+      this.quest = result[0];
+    });
   }
 }
