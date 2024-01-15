@@ -2,40 +2,39 @@
     <div class="top">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <label for="type">
-               Type:
+               Type:<br/>
                <select id="type" formControlName="type">
                  <option value="Daily">Daily</option>
                  <option value="Weekly">Weekly</option>
                  <option value="One time">One time</option>
                </select>
             </label>
-           
+            <br/>
             <label for="title">
-               Title:
+               Title:<br/>
                <input id="title" type="text" formControlName="title" />
             </label>
-           
+            <br/>
             <label for="description">
-               Description:
+               Description:<br/>
                <textarea id="description" formControlName="description"></textarea>
             </label>
-           
+            <br/>
             <label for="difficulty">
-               Difficulty:
+               Difficulty:<br/>
                <input id="difficulty" type="number" formControlName="difficulty" />
             </label>
-           
+            <br/>
             <label for="reward">
-               Reward:
+               Reward:<br/>
                <input id="reward" type="number" formControlName="reward" />
             </label>
-           
-            <button type="submit">Submit</button>
+            <br/>
+            <div class="bottom">
+                <app-game-button type="submit" [label]="'Add new quest'"/>
+            </div>
            </form>
     </div>
     
-    <div class="bottom">
-        <app-game-button [label]="'Add new quest'"/>
-    </div>
 
 </div>

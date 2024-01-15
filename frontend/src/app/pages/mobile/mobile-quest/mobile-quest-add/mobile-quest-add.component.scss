@@ -18,3 +18,22 @@
 .title{
     font-weight: bold;
 }
+
+label, input, textarea{
+    width: 100%;
+    font-weight: bold;
+}
+
+input, textarea{
+    border-radius: 7px;
+    border: 1px solid #dadada;
+}
+
+label{
+    margin-top: 7px;
+}
+
+input{
+    height: 40px;
+}
+
