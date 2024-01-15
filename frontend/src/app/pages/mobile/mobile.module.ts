@@ -12,7 +12,8 @@ import { SharedModule } from '../shared/shared.module';
 import { MobileBottomNavbarComponent } from './mobile-bottom-navbar/mobile-bottom-navbar.component';
 import { MobileBottomNavbarItemComponent } from './mobile-bottom-navbar/mobile-bottom-navbar-item/mobile-bottom-navbar-item.component';
 import { MobileQuestComponent } from './mobile-quest/mobile-quest.component';
-
+import { MobileQuestAddComponent } from './mobile-quest/mobile-quest-add/mobile-quest-add.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,12 +25,15 @@ import { MobileQuestComponent } from './mobile-quest/mobile-quest.component';
     MobileHeaderComponent,
     MobileBottomNavbarComponent,
     MobileBottomNavbarItemComponent,
-    MobileQuestComponent
+    MobileQuestComponent,
+    MobileQuestAddComponent
   ],
   imports: [
     CommonModule,
     MobileRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class MobileModule { }
