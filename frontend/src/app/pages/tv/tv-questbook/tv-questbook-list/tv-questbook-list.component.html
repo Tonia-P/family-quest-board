@@ -1,7 +1,6 @@
 <div class="container">
 
     <div *ngFor="let quest of quests">
-        <app-tv-questbook-item/>
+        <app-tv-questbook-item [quest]="quest"/>
     </div>
-    <app-tv-questbook-item [quest]="example_quest"/>
 </div>
