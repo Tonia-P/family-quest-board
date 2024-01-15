@@ -4,7 +4,7 @@ import { IUser, UserModel } from '../User/User.model';
 import { ResourceController } from '../../shared';
 import { StatusCodes } from 'http-status-codes';
 import { Logger } from '../../shared/utils/logger';
-import { SocketsService } from "../../../services";
+import { DIContainer, SocketsService } from "../../../services";
 export class TaskController extends ResourceController<ITask>{
     private logger: Logger = new Logger();
     constructor() {
@@ -251,8 +251,9 @@ export class TaskController extends ResourceController<ITask>{
 
     pingOtherDevicesForTask = async (req: Request, res: Response) => {
         try{
-            const socket = new SocketsService();
+            const socket = DIContainer.get(SocketsService);
             socket.publish(req.body.event, req.body.message);
+            return res.status(StatusCodes.OK).json(req.body.message);
         }
         catch(error: any){
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });

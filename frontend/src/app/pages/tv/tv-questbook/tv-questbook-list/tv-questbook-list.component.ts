@@ -11,6 +11,21 @@ import { Quest } from 'src/app/pages/shared/interfaces/quest';
 export class TvQuestbookListComponent implements OnInit {
 
   @Input() quests: Quest[] = [];
+
+  @Input() quest: Quest = {
+    _id: "9",
+    title: "Kapp Kapp",
+    type: "daily",
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing el
+    sed do eiusmod tempor incididunt ut labore et dolore magna al
+    la.`,
+    difficulty: 1,
+    reward: 50,
+    participants:[
+      'daughter',
+      'son'
+    ]
+  }
   
   constructor(
     private tasksService: TasksService,
@@ -25,12 +40,23 @@ export class TvQuestbookListComponent implements OnInit {
       this.getAllTasks();
     });
 
+    this.socketService.subscribe("Task_Selected", (data: any) => {
+      this.getTaskById(data);
+    });
+
   }
 
   private getAllTasks(): void {
     this.tasksService.getAll().subscribe((result) => {
       console.log(result);
       this.quests = result;
+    });
+  }
+
+  private getTaskById(taskId: string): void {
+    this.tasksService.getById(taskId).subscribe((result) => {
+      console.log(result);
+      this.quest = result;
     });
   }
 
