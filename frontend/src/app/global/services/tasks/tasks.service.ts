@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TaskModel } from '../../models/tasks/task.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import * as _ from 'lodash';
@@ -44,6 +44,15 @@ export class TasksService {
 
   public delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.hostURl}/api/tasks/${id}`);
+  }
+
+  public pingOtherDevicesForTask(resource: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http
+      .post(`${this.hostURl}/api/tasks/pingOtherDevices`, resource, {headers})
+      .pipe(map(result => result));
   }
 
 }

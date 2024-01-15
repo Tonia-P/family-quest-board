@@ -39,6 +39,10 @@ export class TvQuestbookDetailsComponent implements OnInit {
     this.socketService.subscribe("tasks_update", (data: any) => {
       this.getAllTasks();
     });
+
+    this.socketService.subscribe("Task_Selected", (data: any) => {
+      this.getTaskById(data);
+    });
   }
 
   onButtonCLick(){
@@ -50,6 +54,13 @@ export class TvQuestbookDetailsComponent implements OnInit {
       console.log(result);
       this.quests = result;
       this.quest = result[0];
+    });
+  }
+
+  private getTaskById(taskId: string): void {
+    this.tasksService.getById(taskId).subscribe((result) => {
+      console.log(result);
+      this.quest = result;
     });
   }
 }
