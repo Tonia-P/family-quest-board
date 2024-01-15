@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.title{
+    color: orange;
+    border-bottom: 2px solid orange;
+}
+
+h5{
+    font-weight: bold;
+}
+
+.rewards{
+    display: flex;
+}
+.bottom{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 100;
+    left: 0;
+}

@@ -1,1 +1,28 @@
-<p>mobile-quest-details works!</p>
+<div class="container">
+    <div>
+        <h3 class="title">Target </h3>
+        
+        <h5>Title</h5>
+        
+        <div>desc</div>
+        
+        <div>time</div>
+        
+        <h3 class="title"> Participants</h3>
+        
+        <app-participants-set [images]="['son', 'daughter']"/>
+        
+        <h3 class="title">Rewards</h3>
+        <div class="rewards">
+
+            <app-reward-card [amount]="999" [device]="'mobile'" [color]="'gold'"/>
+        </div>
+
+    </div>
+    <div class="bottom">
+        <app-game-button [label]="'Complete quest'"/>
+        <app-game-button [label]="'Give up quest'"/>
+    
+    </div>
+
+</div>

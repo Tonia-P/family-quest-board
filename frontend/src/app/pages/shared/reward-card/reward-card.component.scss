@@ -12,9 +12,10 @@
     justify-content: space-between;
 
     .amount{
-        background-color: rgba(53, 51, 87, 0.534);
+        background-color: rgba(15, 11, 87, 0.534);
         text-align: center;
         width: 100%;
+        color: white;
     }
 
     .img-cont{
@@ -38,4 +39,13 @@
 
 .blue-bg{
     background-color: $teal400;
+}
+
+.mobile{
+    height: 13vw;
+    width: 10vw;
+    img{
+        aspect-ratio: 1 / 1;
+        max-width: 22px;
+    }
 }
