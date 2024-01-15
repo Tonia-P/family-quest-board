@@ -15,20 +15,27 @@ export class MobileQuestAddComponent {
   constructor(private fb: FormBuilder, private tasksService: TasksService,
     private socketService: SocketsService) {
      this.form = this.fb.group({
-       type: ['Daily', Validators.required],
        title: ['', Validators.required],
        description: ['', Validators.required],
-       deadline: ['', Validators.required],
+       type: ['Daily', Validators.required],
        difficulty: ['', Validators.required],
        reward: ['', Validators.required],
+       deadline: ['', Validators.required]
      });
 
   }
  
   onSubmit() {
-     if (this.form.valid) {
-      const data = new TaskModel(this.form);
-      data.participants = [];
+    if (this.form.valid) {
+      const data = {
+        title: this.form.get('title')?.value,
+        description: this.form.get('description')?.value,
+        type: this.form.get('type')?.value.toLowerCase(),
+        difficulty: this.form.get('difficulty')?.value,
+        reward: this.form.get('reward')?.value,
+        deadline: this.form.get('deadline')?.value,
+        participants: []
+      };
 
       this.createTask(data);
       console.log('Form is valid:', this.form.value);
@@ -37,7 +44,7 @@ export class MobileQuestAddComponent {
      }
   }
 
-  private createTask(task: TaskModel): void {
+  private createTask(task: any): void {
     this.tasksService.create(task).subscribe((result) => {
       console.log(result);
     });
