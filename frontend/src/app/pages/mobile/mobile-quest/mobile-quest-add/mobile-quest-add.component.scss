@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 100;
+    left: 0;
+}
+
+.title{
+    font-weight: bold;
+}

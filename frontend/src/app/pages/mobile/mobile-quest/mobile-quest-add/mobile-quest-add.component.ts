@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mobile-quest-add',
@@ -6,5 +7,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./mobile-quest-add.component.scss']
 })
 export class MobileQuestAddComponent {
+  form: FormGroup;
 
+  constructor(private fb: FormBuilder) {
+     this.form = this.fb.group({
+       type: ['Daily', Validators.required],
+       title: ['', Validators.required],
+       description: ['', Validators.required],
+       difficulty: ['', Validators.required],
+       reward: ['', Validators.required]
+     });
+  }
+ 
+  onSubmit() {
+     if (this.form.valid) {
+       console.log('Form is valid:', this.form.value);
+     } else {
+       console.log('Form is invalid:', this.form.errors);
+     }
+  }
+ 
 }
