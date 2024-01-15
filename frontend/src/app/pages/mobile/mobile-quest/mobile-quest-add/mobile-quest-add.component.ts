@@ -11,11 +11,12 @@ export class MobileQuestAddComponent {
 
   constructor(private fb: FormBuilder) {
      this.form = this.fb.group({
-       type: ['Daily', Validators.required],
        title: ['', Validators.required],
        description: ['', Validators.required],
+       type: ['Daily', Validators.required],
        difficulty: ['', Validators.required],
-       reward: ['', Validators.required]
+       reward: ['', Validators.required],
+       deadline: ['', Validators.required]
      });
   }
  
