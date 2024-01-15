@@ -142,8 +142,6 @@ export class UserController extends ResourceController<IUser>{
                 return res.status(StatusCodes.BAD_REQUEST).json({ error: "Can not add quest duplicate" });
             }
 
-            quest.participants.push(userId);
-
             user.quests.push(quest);
 
             req.body = { "quests": user.quests };
@@ -252,3 +250,4 @@ export class UserController extends ResourceController<IUser>{
     }
 
 }
+

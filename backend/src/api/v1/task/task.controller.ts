@@ -1,8 +1,10 @@
 import { Request, Response, NextFunction, Router } from 'express';
 import { ITask, TaskModel } from './task.model';
+import { IUser, UserModel } from '../User/User.model';
 import { ResourceController } from '../../shared';
 import { StatusCodes } from 'http-status-codes';
 import { Logger } from '../../shared/utils/logger';
+import { SocketsService } from "../../../services";
 export class TaskController extends ResourceController<ITask>{
     private logger: Logger = new Logger();
     constructor() {
@@ -20,7 +22,13 @@ export class TaskController extends ResourceController<ITask>{
             .get('/:id', this.getTaskById)
             .post('/', this.postTask)
             .put('/:id', this.updateTask)
-            .delete('/:id', this.deleteTask);
+            .delete('/:id', this.deleteTask)
+            .post('/:id/participant/:participantId', this.addTaskParticipants)
+            .get('/:id/participants', this.getTaskParticipants)
+            .get('/:id/participant/:participantId', this.getTaskParticipantsByName)
+            .put('/:id/participant/:participantId', this.updateTaskParticipants)
+            .delete('/:id/participant/:participantId', this.deleteTaskParticipants)
+            .post('/pingOtherDevices', this.pingOtherDevicesForTask);
 
         return router;
     }
@@ -110,4 +118,145 @@ export class TaskController extends ResourceController<ITask>{
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
         }
     }
+
+
+    addTaskParticipants = async (req: Request, res: Response) => {
+        this.logger.debug('addTaskParticipant request');
+        try {
+            const taskId = req.params.id;
+            const participantId = req.params.participantId;
+
+            const task = await TaskModel.findById(taskId);
+            if (!task) {
+                return res.status(StatusCodes.NOT_FOUND).json({ error: "Could not find the task" });
+            }
+
+            const participant = await UserModel.findById(participantId);
+            if (!participant) {
+                return res.status(StatusCodes.NOT_FOUND).json({ error: "Could not find the participant" });
+            }
+
+            const index = task.participants.findIndex(user => user === participant.name);
+
+            if (index !== -1) {
+                return res.status(StatusCodes.BAD_REQUEST).json({ error: "Can not add participant duplicate" });
+            }
+
+            task.participants.push(participant.name);
+
+            req.body = { "participants": task.participants };
+
+            const updatedTask = await this.update(req.params.id, req.body.blacklist, req, res);
+
+            return res.status(StatusCodes.OK).json(task);
+
+        } catch (error: any) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+        }
+    }
+
+    deleteTaskParticipants = async (req: Request, res: Response) => {
+        this.logger.debug('addUSerQuest request');
+        try {
+            const taskId = req.params.id;
+            const participantName = req.params.participantName;
+
+            const task = await TaskModel.findById(taskId);
+            if (!task) {
+                return res.status(StatusCodes.NOT_FOUND).json({ error: "Could not foind the task" });
+            }
+
+            const index = task.participants.findIndex(user => user === participantName);
+
+            if (index !== -1) {
+                task.participants.splice(index, 1);
+            }
+
+            req.body = { "participants": task.participants };
+
+            const updatedTask = await this.update(req.params.id, req.body.blacklist, req, res);
+
+            return res.status(StatusCodes.OK).json(task);
+
+        } catch (error: any) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+        }
+    }
+
+    getTaskParticipants = async (req: Request, res: Response) => {
+        this.logger.debug('getTaskParticipants request');
+        try {
+            const taskId = req.params.id;
+            const task = await TaskModel.findById(taskId);
+            if (!task) {
+                return res.status(StatusCodes.NOT_FOUND).json({ error: "Could not find the task" });
+            }
+            return res.status(StatusCodes.OK).json(task.participants);
+        } catch (error: any) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+        }
+    }
+
+    getTaskParticipantsByName = async (req: Request, res: Response) => {
+        this.logger.debug('getUsers request');
+        try {
+            const taskId = req.params.id;
+            const participantName = req.params.participantName;
+            const task = await TaskModel.findById(taskId);
+            if (!task) {
+                return res.status(StatusCodes.NOT_FOUND).json({ error: "Could not find the task" });
+            }
+
+            const index = task.participants.findIndex(user => user === participantName);
+
+            if(index !== -1){
+                return res.status(StatusCodes.OK).json(task.participants[index]);
+            }
+            else{
+                return res.status(StatusCodes.NOT_FOUND).json({ error: "Could not find the participant" });
+            }
+        } catch (error: any) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+        }
+    }
+
+    updateTaskParticipants = async (req: Request, res: Response) => {
+        this.logger.debug('addUSerQuest request');
+        try {
+            const taskId = req.params.id;
+            const participantName = req.params.participantId;
+
+            const task = await TaskModel.findById(taskId);
+            if (!task) {
+                return res.status(StatusCodes.NOT_FOUND).json({ error: "Could not find the task" });
+            }
+
+            const index = task.participants.findIndex(user => user === participantName);
+
+            if (index !== -1) {
+                task.participants[index] = participantName;
+            }
+
+            req.body = { "participants": task.participants };
+
+            const updatedTask = await this.update(req.params.id, req.body.blacklist, req, res);
+
+            return res.status(StatusCodes.OK).json(task);
+
+        } catch (error: any) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+        }
+    }
+
+
+    pingOtherDevicesForTask = async (req: Request, res: Response) => {
+        try{
+            const socket = new SocketsService();
+            socket.publish(req.body.event, req.body.message);
+        }
+        catch(error: any){
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+        }
+    }
+
 }
