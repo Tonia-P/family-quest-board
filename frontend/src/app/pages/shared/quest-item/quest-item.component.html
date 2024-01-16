@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <button class="info" [ngClass]="device" > 
+    <button class="info" [ngClass]="device" (click)="goToView()"> 
         <app-participants-set [images]="quest.participants"/>
         <div>
             <app-reward-card [amount]="quest.reward" [color]="'gold'" [device]="device"/>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Quest } from '../interfaces/quest';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quest-item',
@@ -7,6 +8,8 @@ import { Quest } from '../interfaces/quest';
   styleUrls: ['./quest-item.component.scss']
 })
 export class QuestItemComponent {
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
   
   @Input() device: string = " ";
 
@@ -31,4 +34,9 @@ export class QuestItemComponent {
   onClick() {
     this.questClicked.emit();
   }
+
+  goToView() {
+    this.router.navigate(['/mobile/view', this.quest._id], { relativeTo: this.activatedRoute, queryParams: { id: this.quest._id } });
+   }
+
 }
