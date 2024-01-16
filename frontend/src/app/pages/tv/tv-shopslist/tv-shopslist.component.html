@@ -10,7 +10,7 @@
     />
     <div class="button-wrap">
         
-        <button class="enter-btn" [routerLink]="['../shop', currentSlide]">SHOP NAME</button>
+        <button class="enter-btn" [routerLink]="['../shop', shops[currentSlide]._id]">{{shops[currentSlide%shops.length].name}}</button>
     </div>
     </ng-container>
 
