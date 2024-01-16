@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemModel } from 'src/app/global/models/items/item.model';
-import { ItemsService } from 'src/app/global/services/item-shop/item-shop.service';
+import { ItemsService } from 'src/app/global/services/item-shop/item.service';
 
 
 @Component({
