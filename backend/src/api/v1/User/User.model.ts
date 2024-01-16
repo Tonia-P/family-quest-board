@@ -7,7 +7,7 @@ import {ITask, TaskModel} from '../task/task.model';
 // Interface declaration
 export interface IUser extends Document {
   name: string;
-  currency: string;
+  coins: number;
   quests: ITask[];
   parent: boolean;
 }
@@ -17,7 +17,7 @@ export interface IUser extends Document {
 const userSchema = new Schema(
   {
     name: { type: String, required: true },
-    currency: { type: String, required: true },
+    coins: { type: Number, required: true },
     quests: [{ type: Object, required: false }],
     parent: { type: Boolean, required: true }
   },
