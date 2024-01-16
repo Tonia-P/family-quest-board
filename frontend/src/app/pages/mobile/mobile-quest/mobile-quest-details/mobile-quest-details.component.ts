@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { Quest } from 'src/app/pages/shared/interfaces/quest';
 
 @Component({
@@ -23,14 +25,24 @@ export class MobileQuestDetailsComponent {
       'daughter',
       'son'
     ],
-    deadline: "17-01-2002"
+    deadline: "2002-1-17"
   }
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
+    private socketService: SocketsService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
+    });
+    const stringId: string = this.id as string; 
+    this.getTaskById(stringId);
+  }
+
+  private getTaskById(taskId: string): void {
+    this.tasksService.getById(taskId).subscribe((result) => {
+      console.log(result);
+      this.quest = result;
     });
   }
 

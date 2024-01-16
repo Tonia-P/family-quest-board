@@ -4,7 +4,7 @@ import { ResourceController } from '../../shared';
 import { StatusCodes } from 'http-status-codes';
 import { Logger } from '../../shared/utils/logger';
 
-export class ItemShopController extends ResourceController<IItem>{
+export class ItemController extends ResourceController<IItem>{
 
     private logger: Logger = new Logger();
     constructor() {
@@ -40,6 +40,7 @@ export class ItemShopController extends ResourceController<IItem>{
             .status(StatusCodes.OK)
             .json(allTasks);
     }
+
 
     /**
      * Creates a new task
