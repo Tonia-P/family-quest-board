@@ -11,7 +11,7 @@ export class TaskModel {
   public type!: "daily" | "weekly" | "onetime";
   public difficulty!: number;
   public deadline!: string;
-  public completed!: string;
+  public completed!: boolean;
 
   constructor(model?: any) {
     Object.assign(this, model);
