@@ -31,8 +31,11 @@ export class TasksService {
   }
 
   public create(resource: TaskModel): Observable<TaskModel> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
     return this.http
-      .post<TaskModel>(`${this.hostURl}/api/tasks`, resource)
+      .post<TaskModel>(`${this.hostURl}/api/tasks`, resource, {headers})
       .pipe(map(result => new TaskModel(result)));
   }
 
