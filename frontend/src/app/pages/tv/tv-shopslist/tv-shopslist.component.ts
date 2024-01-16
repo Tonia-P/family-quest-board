@@ -10,8 +10,18 @@ import { Item } from 'src/app/pages/shared/interfaces/item';
   styleUrls: ['./tv-shopslist.component.scss'],
 })
 export class TvShopslistComponent implements OnInit {
+Number(arg0: string) {
+throw new Error('Method not implemented.');
+}
+timer(arg0: number,arg1: number) {
+throw new Error('Method not implemented.');
+}
 
-  @Input() shops: Shop[] = [];
+  @Input() shops: Shop[] = [
+     { _id: "kspps", name: 'Магазин "Тест"'
+       , owner: 'Описание магазина "Тест". Описание магазина "Тест". Описание магазина "Тест".',
+      items:[] },
+  ];
 
   @Input() slides: Slide[] = [
     {
@@ -43,13 +53,13 @@ export class TvShopslistComponent implements OnInit {
 
   onPreviousClick() {
     const previous = this.currentSlide - 1;
-    this.currentSlide = previous < 0 ? this.slides.length - 1 : previous;
+    this.currentSlide = previous < 0 ? this.shops.length - 1 : previous;
     console.log("previous clicked, new current slide is: ", this.currentSlide);
   }
 
   onNextClick() {
     const next = this.currentSlide + 1;
-    this.currentSlide = next === this.slides.length ? 0 : next;
+    this.currentSlide = next === this.shops.length ? 0 : next;
     console.log("next clicked, new current slide is: ", this.currentSlide);
   }
 

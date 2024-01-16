@@ -21,6 +21,8 @@ export class TvHeaderCurrencyComponent implements OnInit {
     private socketService: SocketsService,
     private location: Location) { }
 
+  @Input() amount: number = 0;
+
   ngOnInit(): void {
 
   }
