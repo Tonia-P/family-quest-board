@@ -36,7 +36,6 @@ export class TvQuestbookItemComponent implements OnInit {
     ],
     deadline: "2024-3-1",
     completed: false
-
   }
 
   ngOnInit(): void {

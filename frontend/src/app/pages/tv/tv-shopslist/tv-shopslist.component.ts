@@ -54,6 +54,7 @@ export class TvShopslistComponent implements OnInit {
 
   ngOnInit() {
     this.preloadImages(); // for the demo
+    this.getAllShops(); // retrieves all the shops
   }
 
   preloadImages() {
