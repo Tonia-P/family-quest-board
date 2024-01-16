@@ -44,6 +44,9 @@ export class MobileQuestAddComponent {
      }
   }
 
+  setDifficulty(difficulty: number) {
+    this.form?.get('difficulty')?.setValue(difficulty);
+  }
   private createTask(task: any): void {
     this.tasksService.create(task).subscribe((result) => {
       console.log(result);
