@@ -1,15 +1,14 @@
 
-<!-- carousel -->
 <div class="carousel">
-    <ng-container *ngFor="let slide of slides; let i = index">
+    <ng-container *ngFor="let shop of shops; let i = index">
     <img
         *ngIf="i === currentSlide"
-        [src]="slide.src"
+        [src]="slides[i].src"
         class="slide"
         alt="img"
     />
     <div class="button-wrap">
-        
+
         <button class="enter-btn" [routerLink]="['../shop', shops[currentSlide]._id]">{{shops[currentSlide%shops.length].name}}</button>
     </div>
     </ng-container>
