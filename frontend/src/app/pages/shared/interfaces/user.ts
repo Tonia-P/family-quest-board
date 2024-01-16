@@ -1,8 +1,9 @@
 import { Quest } from "./quest";
 
 export interface User {
-    id: string;
-    username: string;
-    money: number;
-    quests: Quest[];
+    _id: string;
+    name: string;
+    currency: string;
+    quests: Task[];
+    parent: boolean;
 }

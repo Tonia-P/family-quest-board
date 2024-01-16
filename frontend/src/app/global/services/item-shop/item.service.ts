@@ -32,6 +32,18 @@ export class ItemsService {
     return this.http.delete<void>(`${this.hostURl}/api/item-shop/${id}`);
   }
 
+  public getById(id: string): Observable<ItemModel> {
+    return this.http
+      .get<ItemModel>(`${this.hostURl}/api/shop/${id}`)
+      .pipe(map(result => new ItemModel(result)));
+  }
+
+  public update(resource: ItemModel): Observable<ItemModel> {
+    return this.http
+      .put<ItemModel>(`${this.hostURl}/api/shop/${resource._id}`, resource)
+      .pipe(map(result => new ItemModel(result)));
+  }
+
 
   // Debug function for deleting all items
   private deleteAll() {

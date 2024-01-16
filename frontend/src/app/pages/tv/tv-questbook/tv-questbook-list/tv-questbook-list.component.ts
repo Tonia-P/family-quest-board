@@ -35,7 +35,6 @@ export class TvQuestbookListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllTasks();
-
     // Susbcribe to socket event and set callback
     this.socketService.subscribe("tasks_update", (data: any) => {
       this.getAllTasks();
