@@ -17,11 +17,7 @@ timer(arg0: number,arg1: number) {
 throw new Error('Method not implemented.');
 }
 
-  @Input() shops: Shop[] = [
-     { _id: "kspps", name: 'Магазин "Тест"'
-       , owner: 'Описание магазина "Тест". Описание магазина "Тест". Описание магазина "Тест".',
-      items:[] },
-  ];
+  @Input() shops: Shop[] = [];
 
   @Input() slides: Slide[] = [
     {
