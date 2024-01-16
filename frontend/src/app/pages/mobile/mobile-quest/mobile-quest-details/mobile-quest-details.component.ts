@@ -25,7 +25,8 @@ export class MobileQuestDetailsComponent {
       'daughter',
       'son'
     ],
-    deadline: "2002-1-17"
+    deadline: "2002-1-17",
+    completed: false
   }
 
   constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,

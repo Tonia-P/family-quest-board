@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 })
 export class MobileHeaderComponent implements OnInit {
 
-  @Input() user: User = {_id: '', name: '', currency: '', quests: [], parent: false};
+  @Input() user: User = {_id: '', name: '', coins: 0, quests: [], parent: false};
 
   constructor(
     private usersService: UsersService,
