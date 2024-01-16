@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Slide } from './tv-shoplist.interface';
 import { ShopsService } from 'src/app/global/services/item-shop/shop.service';
 import { Shop } from 'src/app/pages/shared/interfaces/shop';
+import { Item } from 'src/app/pages/shared/interfaces/item';
 
 @Component({
   selector: 'app-tv-shopslist',

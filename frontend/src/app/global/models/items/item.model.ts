@@ -6,7 +6,7 @@ export class ItemModel {
   public description!: string;
   public image!: string;
   public price!: number;
-  public selected?: boolean
+  public selected!: boolean
 
   constructor(model?: any) {
     Object.assign(this, model);

@@ -51,10 +51,10 @@ export class ShopsService {
       .pipe(map(result => new ShopModel(result)));
   }
 
-  public getAllItems(resource: string): Observable<ShopModel[]> {
+  public getAllItems(resource: string): Observable<ItemModel[]> {
     return this.http
-      .get<ShopModel[]>(`${this.hostURl}/api/shop/${resource}/items`)
-      .pipe(map(result => _.map(result, (t) => new ShopModel(t))));
+      .get<ItemModel[]>(`${this.hostURl}/api/shop/${resource}/items`)
+      .pipe(map(result => _.map(result, (t) => new ItemModel(t))));
   }
 
   public getItemById(resourceId: string, id: string): Observable<ShopModel> {
