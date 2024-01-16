@@ -14,4 +14,7 @@ export class MobileHeaderComponent {
     this.location.back();
   }
 
+  ngOnInit(): void {
+    console.log("Kappa Keepo");
+  }
 }
