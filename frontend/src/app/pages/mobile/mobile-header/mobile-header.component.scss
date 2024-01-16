@@ -16,5 +16,11 @@
             font-weight: bolder;
             font-size: larger;
         }
+        border: 0;
+        background-color: transparent;
+        :focus{
+            border: 0px;
+        }
     }
+
 }
