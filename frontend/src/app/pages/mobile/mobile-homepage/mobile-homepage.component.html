@@ -12,4 +12,12 @@
     [label]="'Add new quest'"
     [onButtonClick]="goToAdd"
     />
+    <h4 class="title">Completed quests</h4>
+    <div class="questslist">
+        <div *ngFor="let quest of completed_quests">
+        
+            <app-quest-item [device]="'mobile'" [quest]="quest"/>
+        </div>
+    
+    </div>
 </div>

@@ -68,16 +68,16 @@ export class TasksService {
       .pipe(map(result => new TaskModel(result)));
   }
 
-  public getAllParticipants(id: string): Observable<TaskModel[]> {
+  public getAllParticipants(id: string): Observable<string[]> {
     return this.http
-      .get<TaskModel[]>(`${this.hostURl}/api/tasks/${id}/participants`)
-      .pipe(map(result => _.map(result, (t) => new TaskModel(t))));
+      .get<string[]>(`${this.hostURl}/api/tasks/${id}/participants`)
+      .pipe(map(result => result));
   }
 
-  public getParticipantById(id: string, participantId: string): Observable<TaskModel> {
+  public getParticipantById(id: string, participantId: string): Observable<string> {
     return this.http
-      .get<TaskModel>(`${this.hostURl}/api/tasks/${id}/participants/${participantId}`)
-      .pipe(map(result => new TaskModel(result)));
+      .get<string>(`${this.hostURl}/api/tasks/${id}/participants/${participantId}`)
+      .pipe(map(result => result));
   }
 
   public updateParticipant(resourceId: string, participant: UserModel): Observable<TaskModel> {
