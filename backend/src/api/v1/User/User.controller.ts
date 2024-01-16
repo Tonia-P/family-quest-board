@@ -4,6 +4,8 @@ import { ITask, TaskModel } from '../task/task.model';
 import { ResourceController } from '../../shared';
 import { StatusCodes } from 'http-status-codes';
 import { Logger } from '../../shared/utils/logger';
+
+import { DIContainer, SocketsService } from "../../../services";
 export class UserController extends ResourceController<IUser>{
     private logger: Logger = new Logger();
     constructor() {
@@ -26,7 +28,8 @@ export class UserController extends ResourceController<IUser>{
             .get('/:id/quests', this.getUserQuests)
             .get('/:id/quests/:questId', this.getUserQuestsById)
             .put('/:id/quests/:questId', this.updateUserQuest)
-            .delete('/:id/quests/:questId', this.deleteUserQuest);
+            .delete('/:id/quests/:questId', this.deleteUserQuest)
+            .post('/pingOtherDevices', this.pingOtherDevicesForTask);
 
 
 
@@ -245,6 +248,17 @@ export class UserController extends ResourceController<IUser>{
             return res.status(StatusCodes.OK).json(user);
 
         } catch (error: any) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+        }
+    }
+
+    pingOtherDevicesForTask = async (req: Request, res: Response) => {
+        try{
+            const socket = DIContainer.get(SocketsService);
+            socket.publish(req.body.event, req.body.message);
+            return res.status(StatusCodes.OK).json(req.body.message);
+        }
+        catch(error: any){
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
         }
     }

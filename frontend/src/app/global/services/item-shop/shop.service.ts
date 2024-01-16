@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ShopModel } from '../../models/shops/shop.model';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { environment } from 'src/environments/environment';
@@ -59,7 +59,7 @@ export class ShopsService {
 
   public getItemById(resourceId: string, id: string): Observable<ShopModel> {
     return this.http
-      .get<ItemModel>(`${this.hostURl}/api/shop/${resourceId}/items/${id}`)
+      .get<ShopModel>(`${this.hostURl}/api/shop/${resourceId}/items/${id}`)
       .pipe(map(result => new ShopModel(result)));
   }
 
@@ -84,6 +84,15 @@ export class ShopsService {
         this.delete((item as any)._id).subscribe((data: any) => { });
       });
     });
+  }
+
+  public pingOtherDevicesForTask(resource: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http
+      .post(`${this.hostURl}/api/shop/pingOtherDevices`, resource, {headers})
+      .pipe(map(result => result));
   }
 
 

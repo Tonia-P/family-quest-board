@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ItemModel } from '../../models/items/item.model';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { environment } from 'src/environments/environment';
@@ -52,6 +52,15 @@ export class ItemsService {
         this.delete((item as any)._id).subscribe((data: any) => { });
       });
     });
+  }
+
+  public pingOtherDevicesForTask(resource: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http
+      .post(`${this.hostURl}/api/item/pingOtherDevices`, resource, {headers})
+      .pipe(map(result => result));
   }
 
 }
