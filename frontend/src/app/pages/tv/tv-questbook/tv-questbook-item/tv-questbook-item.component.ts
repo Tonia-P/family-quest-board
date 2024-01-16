@@ -33,7 +33,8 @@ export class TvQuestbookItemComponent implements OnInit {
     participants:[
       'daughter',
       'son'
-    ]
+    ],
+    deadline: "2024-3-1"
   }
 
   ngOnInit(): void {

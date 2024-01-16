@@ -22,7 +22,8 @@ export class QuestItemComponent {
     participants:[
       'daughter',
       'son'
-    ]
+    ],
+    deadline: "2024-3-1"
   }
 
   @Output() questClicked = new EventEmitter<void>();

@@ -22,7 +22,6 @@ export class MobileQuestAddComponent {
        reward: ['', Validators.required],
        deadline: ['', Validators.required]
      });
-
   }
  
   onSubmit() {

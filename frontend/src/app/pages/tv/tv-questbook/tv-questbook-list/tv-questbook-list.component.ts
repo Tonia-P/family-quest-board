@@ -24,7 +24,8 @@ export class TvQuestbookListComponent implements OnInit {
     participants:[
       'daughter',
       'son'
-    ]
+    ],
+    deadline: "2024-1-2"
   }
   
   constructor(
