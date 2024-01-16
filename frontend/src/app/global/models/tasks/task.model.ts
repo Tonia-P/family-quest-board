@@ -10,6 +10,7 @@ export class TaskModel {
   public participants!: string[];
   public type!: "daily" | "weekly" | "onetime";
   public difficulty!: number;
+  public deadline!: string;
 
   constructor(model?: any) {
     Object.assign(this, model);
