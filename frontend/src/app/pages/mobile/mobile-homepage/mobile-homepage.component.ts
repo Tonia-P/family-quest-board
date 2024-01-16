@@ -36,7 +36,7 @@ export class MobileHomepageComponent {
     this.tasksService.getAll().subscribe((result) => {
       console.log(result);
 
-      this.quests = result.filter(result =>  (result.type === 'daily' || this.isToday(result.deadline)));
+      this.quests = result.filter(result =>  ((result.type === 'daily' || this.isToday(result.deadline))) && result.participants.some((participant) => participant === 'mother'));
       console.log(this.quests);
     });
   }
