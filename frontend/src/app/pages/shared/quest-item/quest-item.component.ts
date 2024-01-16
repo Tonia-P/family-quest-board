@@ -26,7 +26,8 @@ export class QuestItemComponent {
       'daughter',
       'son'
     ],
-    deadline: "2024-3-1"
+    deadline: "2024-3-1",
+    completed: false 
   }
 
   @Output() questClicked = new EventEmitter<void>();
