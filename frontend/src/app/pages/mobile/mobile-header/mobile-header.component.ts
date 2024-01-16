@@ -11,17 +11,12 @@ import { Location } from '@angular/common';
 })
 export class MobileHeaderComponent implements OnInit {
 
-  constructor(private location: Location) { }
-
-  goBack() {
-    this.location.back();
-  }
-
   @Input() user: User = {_id: '', name: '', currency: '', quests: [], parent: false};
 
   constructor(
     private usersService: UsersService,
-    private socketService: SocketsService
+    private socketService: SocketsService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -37,5 +32,9 @@ export class MobileHeaderComponent implements OnInit {
       console.log(result);
       this.user = result;
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
