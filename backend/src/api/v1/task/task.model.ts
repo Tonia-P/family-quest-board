@@ -19,6 +19,7 @@ export interface ITask extends Document {
   difficulty: number;
   participants: IUser['name'][];
   reward: number;
+  completed: boolean;
 
 }
 
@@ -32,7 +33,8 @@ const taskSchema = new Schema(
     deadline: { type: String, required: false },
     difficulty: { type: Number, required: true },
     participants: [{ type: String, required: false }],
-    reward: { type: Number, required: true}
+    reward: { type: Number, required: true},
+    completed: { type: Boolean, required: true}
   },
   { ...DefaultSchemaOptions }
 );

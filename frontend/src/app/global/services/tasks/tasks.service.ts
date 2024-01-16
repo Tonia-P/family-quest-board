@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, filter } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import * as _ from 'lodash';
+import { UserModel } from '../../models/users/user.model';
 
 
 @Injectable({
@@ -56,6 +57,37 @@ export class TasksService {
     return this.http
       .post(`${this.hostURl}/api/tasks/pingOtherDevices`, resource, {headers})
       .pipe(map(result => result));
+  }
+
+  public addParticipant(resourceId: string, participantId: string): Observable<TaskModel> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http
+      .post<TaskModel>(`${this.hostURl}/api/tasks/${resourceId}/participant/${participantId}`, {headers})
+      .pipe(map(result => new TaskModel(result)));
+  }
+
+  public getAllParticipants(id: string): Observable<TaskModel[]> {
+    return this.http
+      .get<TaskModel[]>(`${this.hostURl}/api/tasks/${id}/participants`)
+      .pipe(map(result => _.map(result, (t) => new TaskModel(t))));
+  }
+
+  public getParticipantById(id: string, participantId: string): Observable<TaskModel> {
+    return this.http
+      .get<TaskModel>(`${this.hostURl}/api/tasks/${id}/participants/${participantId}`)
+      .pipe(map(result => new TaskModel(result)));
+  }
+
+  public updateParticipant(resourceId: string, participant: UserModel): Observable<TaskModel> {
+    return this.http
+      .put<TaskModel>(`${this.hostURl}/api/tasks/${resourceId}/participants/${participant._id}`, participant)
+      .pipe(map(result => new TaskModel(result)));
+  }
+
+  public deleteParticipant(id: string, participantId: string): Observable<void> {
+    return this.http.delete<void>(`${this.hostURl}/api/tasks/${id}/participants/${participantId}`);
   }
 
 }

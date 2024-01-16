@@ -9,4 +9,5 @@ export interface Quest {
     participants: string[];
     difficulty: number;
     reward: number;
+    completed: boolean;
 }

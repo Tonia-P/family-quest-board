@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, filter } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import * as _ from 'lodash';
+import { TaskModel } from '../../models/tasks/task.model';
 
 
 @Injectable({
@@ -56,6 +57,37 @@ export class UsersService {
     return this.http
       .post(`${this.hostURl}/api/users/pingOtherDevices`, resource, {headers})
       .pipe(map(result => result));
+  }
+
+  public createQuest(resource: string, quest: string): Observable<UserModel> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http
+      .post<UserModel>(`${this.hostURl}/api/users/${resource}/quests/${quest}`, quest, {headers})
+      .pipe(map(result => new UserModel(result)));
+  }
+
+  public getAllQuests(id: string): Observable<UserModel[]> {
+    return this.http
+      .get<UserModel[]>(`${this.hostURl}/api/users/${id}/quests`)
+      .pipe(map(result => _.map(result, (t) => new UserModel(t))));
+  }
+
+  public getQuestsById(id: string, quest: string): Observable<UserModel> {
+    return this.http
+      .get<UserModel>(`${this.hostURl}/api/users/${id}/quests/${quest}`)
+      .pipe(map(result => new UserModel(result)));
+  }
+
+  public updateQuest(resource: string, quest: TaskModel): Observable<UserModel> {
+    return this.http
+      .put<UserModel>(`${this.hostURl}/api/users/${resource}/quests/${quest}`, quest)
+      .pipe(map(result => new UserModel(result)));
+  }
+
+  public deleteQuest(id: string, quest: string): Observable<void> {
+    return this.http.delete<void>(`${this.hostURl}/api/users/${id}/quests/${quest}`);
   }
 
 }

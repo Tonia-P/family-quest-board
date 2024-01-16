@@ -4,6 +4,8 @@ import { ResourceController } from '../../shared';
 import { StatusCodes } from 'http-status-codes';
 import { Logger } from '../../shared/utils/logger';
 
+import { DIContainer, SocketsService } from "../../../services";
+
 export class ItemController extends ResourceController<IItem>{
 
     private logger: Logger = new Logger();
@@ -23,7 +25,9 @@ export class ItemController extends ResourceController<IItem>{
             .get('/:id', this.getItemById)
             .post('/', this.postItem)
             .put('/:id', this.updateItem)
-            .delete('/:id', this.deleteItem);
+            .delete('/:id', this.deleteItem)
+            .post('/pingOtherDevices', this.pingOtherDevicesForTask);
+            
 
         return router;
     }
@@ -142,5 +146,16 @@ export class ItemController extends ResourceController<IItem>{
             });
         return res
             .status(StatusCodes.OK);
+    }
+
+    pingOtherDevicesForTask = async (req: Request, res: Response) => {
+        try{
+            const socket = DIContainer.get(SocketsService);
+            socket.publish(req.body.event, req.body.message);
+            return res.status(StatusCodes.OK).json(req.body.message);
+        }
+        catch(error: any){
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+        }
     }
 }
