@@ -8,7 +8,7 @@ import { Quest } from '../interfaces/quest';
 })
 export class QuestItemComponent {
   
-  @Input() isMobile: string = " ";
+  @Input() device: string = " ";
 
   @Input() quest: Quest = {
     _id: "9",

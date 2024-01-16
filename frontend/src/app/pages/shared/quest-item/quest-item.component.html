@@ -6,11 +6,11 @@
         </div>
     </div>
 
-    <div class="info" [ngClass]="isMobile">
+    <button class="info" [ngClass]="device" > 
         <app-participants-set [images]="quest.participants"/>
         <div>
-            <app-reward-card [amount]="quest.reward" [color]="'gold'" [device]="isMobile"/>
+            <app-reward-card [amount]="quest.reward" [color]="'gold'" [device]="device"/>
         </div>
-    </div>
+    </button>
 </div>
 

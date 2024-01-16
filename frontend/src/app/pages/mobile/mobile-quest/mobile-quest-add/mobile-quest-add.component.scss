@@ -37,3 +37,22 @@ input{
     height: 40px;
 }
 
+.btn-group {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .btn-group .btn {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+  
+  .btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    &:hover {
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+  }

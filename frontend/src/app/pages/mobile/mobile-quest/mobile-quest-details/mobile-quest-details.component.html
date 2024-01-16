@@ -2,20 +2,20 @@
     <div>
         <h3 class="title">Target </h3>
         
-        <h5>Title</h5>
+        <h5>{{ quest.title }}</h5>
         
-        <div>desc</div>
+        <div>{{ quest.description }}</div>
         
         <div>time</div>
         
         <h3 class="title"> Participants</h3>
         
-        <app-participants-set [images]="['son', 'daughter']"/>
+        <app-participants-set [images]="quest.participants"/>
         
         <h3 class="title">Rewards</h3>
         <div class="rewards">
 
-            <app-reward-card [amount]="999" [device]="'mobile'" [color]="'gold'"/>
+            <app-reward-card [amount]="quest.reward" [device]="'mobile'" [color]="'gold'"/>
         </div>
 
     </div>
