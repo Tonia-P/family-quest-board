@@ -25,7 +25,8 @@ export class TvQuestbookListComponent implements OnInit {
       'daughter',
       'son'
     ],
-    deadline: "2024-1-2"
+    deadline: "2024-1-2",
+    completed: false
   }
   
   constructor(

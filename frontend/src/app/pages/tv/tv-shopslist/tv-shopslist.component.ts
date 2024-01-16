@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Slide } from './tv-shoplist.interface';
+import { ShopsService } from 'src/app/global/services/item-shop/shop.service';
+import { Shop } from 'src/app/pages/shared/interfaces/shop';
 
 @Component({
   selector: 'app-tv-shopslist',
@@ -8,6 +10,7 @@ import { Slide } from './tv-shoplist.interface';
 })
 export class TvShopslistComponent implements OnInit {
 
+  @Input() shops: Shop[] = [];
 
   @Input() slides: Slide[] = [
     {
@@ -35,7 +38,7 @@ export class TvShopslistComponent implements OnInit {
 
   currentSlide = 0;
 
-  constructor() {}
+  constructor(private shopsService: ShopsService) {}
 
   onPreviousClick() {
     const previous = this.currentSlide - 1;
@@ -57,6 +60,13 @@ export class TvShopslistComponent implements OnInit {
     for (const slide of this.slides) {
       new Image().src = slide.src;
     }
+  }
+
+  private getAllShops(): void {
+    this.shopsService.getAll().subscribe((result) => {
+      console.log(result);
+      this.shops = result;
+    });
   }
 
 }
