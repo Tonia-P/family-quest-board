@@ -22,7 +22,8 @@ export class MobileQuestDetailsComponent {
     participants:[
       'daughter',
       'son'
-    ]
+    ],
+    deadline: "17-01-2002"
   }
 
   constructor(private activatedRoute: ActivatedRoute) { }
