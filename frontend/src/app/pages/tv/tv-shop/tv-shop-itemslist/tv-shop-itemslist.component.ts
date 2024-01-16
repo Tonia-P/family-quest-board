@@ -8,16 +8,15 @@ import { Item } from 'src/app/pages/shared/interfaces/item';
 })
 export class TvShopItemslistComponent implements OnInit {
 
-  @Input() Example_item: Item = {
+  @Input() items: Item[] = [{
     _id: "2",
     name: 'Alpha potion',
-    description: 'AAAAAAAAAAA',
+    description: 'AAAAhuihiuAAAAAAA',
     price: 200,
     selected: false
-  }
+  }]
   constructor() { }
 
-  @Input() items: Item[] = [];
 
   ngOnInit(): void {
     

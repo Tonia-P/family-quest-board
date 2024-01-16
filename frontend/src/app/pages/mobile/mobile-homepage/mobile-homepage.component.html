@@ -2,7 +2,10 @@
 
     <h4 class="title">Today's quests</h4>
     <div class="questslist">
-        <app-quest-item [device]="'mobile'"/>
+        <div *ngFor="let quest of quests">
+        
+            <app-quest-item [device]="'mobile'" [quest]="quest"/>
+        </div>
     
     </div>
     <app-game-button
