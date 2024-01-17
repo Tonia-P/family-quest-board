@@ -10,7 +10,5 @@ export class MobileBottomNavbarItemComponent {
   @Input() label: string = 'Home';
   @Input() url: string = '';
   @Input() image: string = 'https://via.placeholder.com/150';
-  
-
 
 }

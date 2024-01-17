@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Item } from 'src/app/pages/shared/interfaces/item';
 
@@ -17,30 +17,19 @@ export class TvShopItemComponent implements OnInit {
     price: 200,
     selected: false
   }
+  @Output() selectedFlag: EventEmitter<Item> =   new EventEmitter();
+
   
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) { }
   
-  public changeParams() {
-    const queryParams: Params = { "itemid":  this.item._id};
-  console.log(queryParams)
-    this.router.navigate(
-      [], 
-      {
-        relativeTo: this.activatedRoute,
-        queryParams,
-        replaceUrl: true,
-        queryParamsHandling: 'merge', // remove to replace all query params by provided
-      }
-    );
-  }
 
   ngOnInit(): void {
   }
 
-  onParamClick() {
-    this.changeParams()
+  onSelect(): void{
+    this.selectedFlag.emit(this.item)
   }
 }

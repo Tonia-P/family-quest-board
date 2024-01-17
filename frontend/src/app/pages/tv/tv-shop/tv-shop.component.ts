@@ -14,7 +14,28 @@ import { Item } from 'src/app/pages/shared/interfaces/item';
 export class TvShopComponent implements OnInit {
 
   
-  @Input() shopItems: Item[] = [];
+  @Input() shopItems: Item[] = [{
+    _id: "2",
+    name: 'Beta potion',
+    description: 'AAAAhuihiuAAAAAAA',
+    price: 200,
+    selected: false
+  },
+  {
+    _id: "7",
+    name: 'Gamma potion',
+    description: 'hhh',
+    price: 400,
+    selected: false
+  }];
+  @Input() selectedItem: Item = {
+      _id: "2",
+      name: 'Beta potion',
+      description: 'AAAAhuihiuAAAAAAA',
+      price: 200,
+      selected: false
+    
+  }
   @Input() id: string | null = null;
   @Input() itemid: string | null = null;
 
