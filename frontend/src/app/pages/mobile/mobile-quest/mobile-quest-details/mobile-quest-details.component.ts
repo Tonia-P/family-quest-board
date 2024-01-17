@@ -15,6 +15,7 @@ export class MobileQuestDetailsComponent {
 
   @Input() id: string | null = null;
   @Input() quests: Quest[] = [];
+  @Input() isAssign: boolean = false;
   @Input() quest: Quest = {
     _id: "9",
     title: "Example in quest item in shared",

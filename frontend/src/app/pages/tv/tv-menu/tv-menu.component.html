@@ -1,7 +1,7 @@
 
-<img src="./assets/item-shop/honey.jpg" alt="img" />
+<img src="./assets/bgs/menu.png" alt="img" />
 <div class="container">
-    <app-tv-menu-button></app-tv-menu-button>
-    <app-tv-menu-button></app-tv-menu-button>
-    <app-tv-menu-button></app-tv-menu-button>
+    <app-tv-menu-button [label]="'Quests'" [imagePath]="'./assets/menu/exit.png'" [url]="'/tv/questbook'"/>
+    <app-tv-menu-button [label]="'Shops'" [imagePath]="'./assets/menu/exit.png'" [url]="'/tv/shopslist'"/>
+    <app-tv-menu-button [label]="'Exit'" [imagePath]="'./assets/menu/exit.png'" [url]="'/tv'"/>
 </div>
