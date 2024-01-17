@@ -27,12 +27,12 @@ export class MobileHomepageComponent {
 
   ngOnInit(): void {
     this.getAllDailyQuests();
-    this.getAllCompletedQuests();
+    this.getAllCompletedQuests("657c66904bff912c74f817d6");
 
     // Susbcribe to socket event and set callback
     this.socketService.subscribe("tasks_update", (data: any) => {
       this.getAllDailyQuests();
-      this.getAllCompletedQuests();
+      this.getAllCompletedQuests("657c66904bff912c74f817d6");
     });
 
   }
@@ -46,8 +46,8 @@ export class MobileHomepageComponent {
     });
   }
 
-  private getAllCompletedQuests(): void {
-    this.userService.getAllQuests("657c66904bff912c74f817d6").subscribe((result) => {
+  private getAllCompletedQuests(userId: string): void {
+    this.userService.getAllQuests(userId).subscribe((result) => {
       console.log(result);
 
       this.completed_quests = result.filter(result =>  result.completed === true && result.participants.some((participant) => participant === 'mother'));

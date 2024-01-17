@@ -81,8 +81,11 @@ export class TasksService {
   }
 
   public updateParticipant(resourceId: string, participant: UserModel): Observable<TaskModel> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
     return this.http
-      .put<TaskModel>(`${this.hostURl}/api/tasks/${resourceId}/participants/${participant._id}`, participant)
+      .put<TaskModel>(`${this.hostURl}/api/tasks/${resourceId}/participants/${participant._id}`, participant, {headers})
       .pipe(map(result => new TaskModel(result)));
   }
 
