@@ -14,6 +14,7 @@ import { TaskModel } from 'src/app/global/models/tasks/task.model';
 export class MobileQuestDetailsComponent {
 
   @Input() id: string | null = null;
+  @Input() quests: Quest[] = [];
   @Input() quest: Quest = {
     _id: "9",
     title: "Example in quest item in shared",
@@ -32,7 +33,7 @@ export class MobileQuestDetailsComponent {
   }
 
   constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
-    private socketService: SocketsService, private userService: UsersService) { }
+    private socketService: SocketsService, private usersService: UsersService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -42,12 +43,6 @@ export class MobileQuestDetailsComponent {
     this.getTaskById(stringId);
   }
 
-  onButtonCLick(){
-    const data = new TaskModel();
-    data._id = this.id as string;
-    data.completed = true;
-    this.completeTask("657c66904bff912c74f817d6", data);
-  }
 
   private getTaskById(taskId: string): void {
     this.tasksService.getById(taskId).subscribe((result) => {
@@ -57,9 +52,16 @@ export class MobileQuestDetailsComponent {
   }
 
   private completeTask(userId: string, data: TaskModel): void {
-    this.userService.updateQuest(userId, data).subscribe((result) => {
+    this.usersService.updateQuest(userId, data).subscribe((result) => {
       console.log(result);
       this.quest = result;
+    });
+  }
+
+  private getUserTasks(userId: string): void{
+    this.usersService.getAllQuests(userId).subscribe((result) => {
+      console.log(result);
+      this.quests = result;
     });
   }
 
@@ -67,6 +69,9 @@ export class MobileQuestDetailsComponent {
 
 
   onCompleteButtonCLick(): void {
-    
+    const updateId = this.id as string;
+    console.log(updateId);
+    this.getUserTasks(updateId);
   }
+  
 }
