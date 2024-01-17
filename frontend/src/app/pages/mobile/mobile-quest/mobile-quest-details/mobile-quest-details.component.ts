@@ -76,6 +76,10 @@ export class MobileQuestDetailsComponent {
       this.quests[0].completed = true;
       this.completeTask("657c66904bff912c74f817d6", this.quests[0]);
     }
+    const updateId = this.id as string;
+    console.log("Kappa")
+    console.log(updateId);
+    this.getUserTasks(updateId);
   }
   
 }
