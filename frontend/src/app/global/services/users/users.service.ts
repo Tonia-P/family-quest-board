@@ -80,10 +80,13 @@ export class UsersService {
       .pipe(map(result => new TaskModel(result)));
   }
 
-  public updateQuest(resource: string, quest: TaskModel): Observable<UserModel> {
+  public updateQuest(resource: string, quest: TaskModel): Observable<TaskModel> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
     return this.http
-      .put<UserModel>(`${this.hostURl}/api/users/${resource}/quests/${quest}`, quest)
-      .pipe(map(result => new UserModel(result)));
+      .put<TaskModel>(`${this.hostURl}/api/users/${resource}/quests/${quest._id}`, quest, {headers})
+      .pipe(map(result => new TaskModel(result)));
   }
 
   public deleteQuest(id: string, quest: string): Observable<void> {

@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { UsersService } from 'src/app/global/services/users/users.service';
 import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { Quest } from 'src/app/pages/shared/interfaces/quest';
+import { TaskModel } from 'src/app/global/models/tasks/task.model';
 
 @Component({
   selector: 'app-mobile-quest-details',
@@ -30,7 +32,7 @@ export class MobileQuestDetailsComponent {
   }
 
   constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
-    private socketService: SocketsService) { }
+    private socketService: SocketsService, private userService: UsersService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -40,11 +42,27 @@ export class MobileQuestDetailsComponent {
     this.getTaskById(stringId);
   }
 
+  onButtonCLick(){
+    const data = new TaskModel();
+    data._id = this.id as string;
+    data.completed = true;
+    this.completeTask("657c66904bff912c74f817d6", data);
+  }
+
   private getTaskById(taskId: string): void {
     this.tasksService.getById(taskId).subscribe((result) => {
       console.log(result);
       this.quest = result;
     });
   }
+
+  private completeTask(userId: string, data: TaskModel): void {
+    this.userService.updateQuest(userId, data).subscribe((result) => {
+      console.log(result);
+      this.quest = result;
+    });
+  }
+
+
 
 }
