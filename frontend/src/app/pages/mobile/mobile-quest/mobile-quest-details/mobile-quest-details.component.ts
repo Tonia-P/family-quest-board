@@ -65,4 +65,8 @@ export class MobileQuestDetailsComponent {
 
 
 
+
+  onCompleteButtonCLick(): void {
+    
+  }
 }

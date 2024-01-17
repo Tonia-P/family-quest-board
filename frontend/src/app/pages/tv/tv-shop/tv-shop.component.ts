@@ -16,6 +16,7 @@ export class TvShopComponent implements OnInit {
   
   @Input() shopItems: Item[] = [];
   @Input() id: string | null = null;
+  @Input() itemid: string | null = null;
 
   constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
     private socketService: SocketsService, private shopsService: ShopsService) { }
@@ -32,6 +33,7 @@ export class TvShopComponent implements OnInit {
     this.shopsService.getAllItems(shopId).subscribe((result) => {
       console.log(result);
       this.shopItems = result;
+
     });
   }
 
