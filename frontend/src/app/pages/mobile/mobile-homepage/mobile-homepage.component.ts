@@ -26,22 +26,21 @@ export class MobileHomepageComponent {
   ) { }
 
   ngOnInit(): void {
-    this.getAllDailyQuests();
+    this.getAllDailyQuests("657c66904bff912c74f817d6");
     this.getAllCompletedQuests("657c66904bff912c74f817d6");
 
     // Susbcribe to socket event and set callback
     this.socketService.subscribe("tasks_update", (data: any) => {
-      this.getAllDailyQuests();
+      this.getAllDailyQuests("657c66904bff912c74f817d6");
       this.getAllCompletedQuests("657c66904bff912c74f817d6");
     });
 
   }
 
-  private getAllDailyQuests(): void {
-    this.tasksService.getAll().subscribe((result) => {
+  private getAllDailyQuests(id: string): void {
+    this.userService.getAllQuests(id).subscribe((result) => {
       console.log(result);
-
-      this.quests = result.filter(result =>  ((result.type === 'daily' || this.isToday(result.deadline))) && result.participants.some((participant) => participant === 'mother'));
+      this.quests = result.filter(result =>  ((result.type === 'daily' || this.isToday(result.deadline)) && result.completed === false));
       console.log(this.quests);
     });
   }

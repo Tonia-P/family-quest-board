@@ -4,6 +4,7 @@ import { SocketsService } from 'src/app/global/services/sockets/sockets.service'
 import { UsersService } from 'src/app/global/services/users/users.service';
 import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { Quest } from 'src/app/pages/shared/interfaces/quest';
+import { Location } from '@angular/common';
 import { TaskModel } from 'src/app/global/models/tasks/task.model';
 
 @Component({
@@ -33,7 +34,7 @@ export class MobileQuestDetailsComponent {
   }
 
   constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
-    private socketService: SocketsService, private userService: UsersService) { }
+    private socketService: SocketsService, private userService: UsersService, private location: Location) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -77,6 +78,7 @@ export class MobileQuestDetailsComponent {
         this.completeTask("657c66904bff912c74f817d6", questId, body);
       }
     });
+    this.location.back();
   }
 
 
