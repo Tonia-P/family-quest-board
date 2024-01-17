@@ -4,6 +4,7 @@ import { SocketsService } from 'src/app/global/services/sockets/sockets.service'
 import { UsersService } from 'src/app/global/services/users/users.service';
 import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { Quest } from 'src/app/pages/shared/interfaces/quest';
+import { Location } from '@angular/common';
 import { TaskModel } from 'src/app/global/models/tasks/task.model';
 
 @Component({
@@ -14,8 +15,8 @@ import { TaskModel } from 'src/app/global/models/tasks/task.model';
 export class MobileQuestDetailsComponent {
 
   @Input() id: string | null = null;
-  @Input() quests: Quest[] = [];
   @Input() isAssign: boolean = false;
+  @Input() quests: TaskModel[] = [];
   @Input() quest: Quest = {
     _id: "9",
     title: "Example in quest item in shared",
@@ -34,7 +35,7 @@ export class MobileQuestDetailsComponent {
   }
 
   constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
-    private socketService: SocketsService, private usersService: UsersService) { }
+    private socketService: SocketsService, private userService: UsersService, private location: Location) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -52,28 +53,41 @@ export class MobileQuestDetailsComponent {
     });
   }
 
-  private completeTask(userId: string, data: TaskModel): void {
-    this.usersService.updateQuest(userId, data).subscribe((result) => {
+  
+  private completeTask(userId: string, taskId: string, task: any): void {
+    console.log("quests");
+    console.log(this.quests);
+    this.userService.updateQuest(userId, taskId, task).subscribe((result) => {
       console.log(result);
       this.quest = result;
     });
   }
 
-  private getUserTasks(userId: string): void{
-    this.usersService.getAllQuests(userId).subscribe((result) => {
+  private getAllQuestsForUpdate(id: string): void{
+    this.userService.getAllQuests(id).subscribe((result) => {
       console.log(result);
-      this.quests = result;
+      console.log(this.quest);
+      this.quests = result.filter(task => task.title === this.quest.title);
+      console.log(this.quests);
+      if(this.quests){
+        console.log("here");
+        const questId = this.quests[0]._id;
+        const body = {
+          completed: true
+        }
+
+        this.completeTask("657c66904bff912c74f817d6", questId, body);
+      }
     });
+    this.location.back();
   }
 
 
-
-
   onCompleteButtonCLick(): void {
-    const updateId = this.id as string;
-    console.log("Kappa")
-    console.log(updateId);
-    this.getUserTasks(updateId);
+    const id = this.id as string;
+    console.log(id);
+    this.getTaskById(id);
+    this.getAllQuestsForUpdate("657c66904bff912c74f817d6");
   }
   
 }
