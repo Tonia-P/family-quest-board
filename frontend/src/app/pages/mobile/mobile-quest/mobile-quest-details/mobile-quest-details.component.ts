@@ -52,21 +52,30 @@ export class MobileQuestDetailsComponent {
   }
 
   
-  private completeTask(taskId: string, task: TaskModel): void {
+  private completeTask(userId: string, taskId: string, task: any): void {
     console.log("quests");
     console.log(this.quests);
-    this.userService.updateQuest(taskId, task).subscribe((result) => {
+    this.userService.updateQuest(userId, taskId, task).subscribe((result) => {
       console.log(result);
       this.quest = result;
     });
   }
 
-  private getAllQuests(id: string): void{
+  private getAllQuestsForUpdate(id: string): void{
     this.userService.getAllQuests(id).subscribe((result) => {
       console.log(result);
       console.log(this.quest);
       this.quests = result.filter(task => task.title === this.quest.title);
       console.log(this.quests);
+      if(this.quests){
+        console.log("here");
+        const questId = this.quests[0]._id;
+        const body = {
+          completed: true
+        }
+
+        this.completeTask("657c66904bff912c74f817d6", questId, body);
+      }
     });
   }
 
@@ -75,13 +84,7 @@ export class MobileQuestDetailsComponent {
     const id = this.id as string;
     console.log(id);
     this.getTaskById(id);
-    this.getAllQuests("657c66904bff912c74f817d6");
-    console.log(this.quests);
-    if(this.quests){
-      console.log("here");
-      this.quests[0].completed = true;
-      this.completeTask("657c66904bff912c74f817d6", this.quests[0]);
-    }
+    this.getAllQuestsForUpdate("657c66904bff912c74f817d6");
   }
   
 }
