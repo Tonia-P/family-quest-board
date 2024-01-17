@@ -20,7 +20,8 @@ export class MobileQuestAddComponent {
        type: ['Daily', Validators.required],
        difficulty: ['', Validators.required],
        reward: ['', Validators.required],
-       deadline: ['', Validators.required]
+       deadline: ['', Validators.required],
+       completed: [false, Validators.required]
      });
   }
 
@@ -33,6 +34,7 @@ export class MobileQuestAddComponent {
         difficulty: this.form.get('difficulty')?.value,
         reward: this.form.get('reward')?.value,
         deadline: this.form.get('deadline')?.value,
+        completed: this.form.get('completed')?.value,
         participants: []
       };
 
