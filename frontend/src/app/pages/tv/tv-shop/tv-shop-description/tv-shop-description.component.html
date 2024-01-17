@@ -1,11 +1,18 @@
 <div class="container">
-    <div>
-        <img src="../../../../../assets/currency/coin.png" alt="Image">
+    <div class="info">
+        <img class="main_img" src="../../../../../assets/shop-items/console.png" alt="Image">
         <h2>{{ item.name }}</h2>
-        <p>Description goes here. It can be short or long. The image above is a placeholder for a real image. </p>
+        <p>{{ item.description}} </p>
     </div>
     <!-- <div>
         <app-game-button [label]="'BUY'"/>
 
     </div> -->
+
+    <div class="price">
+        <p>
+            Price: {{ item.price }} 
+        </p>
+        <img src="../../../../../assets/currency/dia.png" alt="">
+    </div>
 </div>

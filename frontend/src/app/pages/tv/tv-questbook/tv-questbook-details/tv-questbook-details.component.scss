@@ -27,6 +27,10 @@
     scrollbar-width: none;  /* Firefox */
 }
 
+.reward-wrap{
+    width: fit-content;
+}
+
 .details{
     
     h2{
@@ -66,4 +70,8 @@
         width: 32px;
         margin-left: 10px;
     }
+}
+
+.rewards{
+    margin: 2vw 0vw;
 }

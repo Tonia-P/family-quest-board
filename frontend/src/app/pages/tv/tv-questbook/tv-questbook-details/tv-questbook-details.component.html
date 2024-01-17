@@ -16,9 +16,11 @@
         <h3>Participants</h3>
         <app-participants-set [images]="quest.participants"/>
         
-        <div>Rewards</div>
+        <h2 class="rewards">Rewards</h2>
 
-        <app-reward-card [amount]="quest.reward"/>
+        <div class="reward-wrap">
+            <app-reward-card [amount]="quest.reward"/>
+        </div>
     </div>
     
 

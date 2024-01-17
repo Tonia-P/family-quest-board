@@ -1,32 +1,77 @@
+@import "../../../../global/theme/colors";
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+
 .container{
     flex-direction: column;
-        
     display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
     justify-content: space-between;
     padding:  5vh 0 5vh 0vh;
-    div{
+    .name{
         flex-direction: column;
-        
         display: flex;
         align-items: center;
         width: 100%;
     }
 
+    .main_img{
+        rotate: -10deg;
+        transform: translatey(0px);
+	    animation: float 3s ease-in-out infinite;
+        width: 10vw;
+        padding-bottom: 2vh;
+    }
+
+    .info{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        >p{
+            padding: 1vw;
+        }
+    }
 }
 
-img{
-    height: 20vh;
-    padding-bottom: 2vh;
-}
 h2{
     font-size: 2rem;
     color: #fff;
     margin-bottom: .5em;
-    background-color: black;
+    background-color: $main700;
     padding: 1vh;
     width: 100%;
     text-align: center;
 }
+
+.price{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    >p{
+
+        margin-bottom: 0;
+    }
+
+    font-size: 1em;
+    font-weight: bold;
+    >img{
+        
+        width: vw;
+        margin-left: 10px;
+    }
+}
+
