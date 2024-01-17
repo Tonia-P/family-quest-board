@@ -53,6 +53,8 @@ export class MobileQuestDetailsComponent {
 
   
   private completeTask(taskId: string, task: TaskModel): void {
+    console.log("quests");
+    console.log(this.quests);
     this.userService.updateQuest(taskId, task).subscribe((result) => {
       console.log(result);
       this.quest = result;
@@ -62,7 +64,9 @@ export class MobileQuestDetailsComponent {
   private getAllQuests(id: string): void{
     this.userService.getAllQuests(id).subscribe((result) => {
       console.log(result);
+      console.log(this.quest);
       this.quests = result.filter(task => task.title === this.quest.title);
+      console.log(this.quests);
     });
   }
 
@@ -72,14 +76,12 @@ export class MobileQuestDetailsComponent {
     console.log(id);
     this.getTaskById(id);
     this.getAllQuests("657c66904bff912c74f817d6");
-    if(this.quests.length > 0){
+    console.log(this.quests);
+    if(this.quests){
+      console.log("here");
       this.quests[0].completed = true;
       this.completeTask("657c66904bff912c74f817d6", this.quests[0]);
     }
-    const updateId = this.id as string;
-    console.log("Kappa")
-    console.log(updateId);
-    this.getUserTasks(updateId);
   }
   
 }
