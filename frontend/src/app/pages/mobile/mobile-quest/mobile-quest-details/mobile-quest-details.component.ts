@@ -70,6 +70,7 @@ export class MobileQuestDetailsComponent {
 
   onCompleteButtonCLick(): void {
     const updateId = this.id as string;
+    console.log("Kappa")
     console.log(updateId);
     this.getUserTasks(updateId);
   }
