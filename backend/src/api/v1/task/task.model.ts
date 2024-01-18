@@ -14,7 +14,7 @@ enum taskTypes {
 export interface ITask extends Document {
   title: string;
   description: string;
-  type: "Daily" | "Weekly" | "One Time";
+  type: "Daily" | "Weekly" | "OneTime";
   deadline: string;
   difficulty: number;
   participants: IUser['name'][];
