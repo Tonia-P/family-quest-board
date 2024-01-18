@@ -1,7 +1,12 @@
-<h4>Welcome</h4>
 
-<h5>Available items</h5>
+<div class="container">
+    
+    <h4>Welcome</h4>
+    
+    <h5>Available items</h5>
+    
+    <div *ngFor="let item of shopItems">
+        <button>{{ item.name }} </button>
+    </div>
 
-<div *ngFor="let item of shopItems">
-    <button>{{ item.name }} </button>
 </div>
