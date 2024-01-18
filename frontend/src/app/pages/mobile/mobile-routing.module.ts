@@ -15,6 +15,7 @@ const routes: Routes = [
     { path: 'view/:id', component: MobileQuestDetailsComponent},
     { path: 'add', component: MobileQuestAddComponent},
     { path: 'shoplist', component: MobileShopslistComponent},
+    { path: 'shop/:id', component: MobileShopComponent},
     { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ]}
 ];

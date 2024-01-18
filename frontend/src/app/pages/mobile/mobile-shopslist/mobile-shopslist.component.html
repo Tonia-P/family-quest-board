@@ -3,7 +3,9 @@
 
     <h5>Open shops</h5>
     <div class="list">
-        <app-mobile-shopslist-item />
+        <div *ngFor="let shop of shops">
+            <app-mobile-shopslist-item [shop]="shop" />
+        </div>
     </div>
 
 </div>
