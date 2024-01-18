@@ -16,6 +16,7 @@ export class MobileHomepageComponent {
   @Input() quests: Quest[] = [];
   @Input() filteredQuests: Quest[] = [];
   @Input() completed_quests: Quest[] = [];
+  @Input() username: string = "Kappa";
 
   constructor(
     private tasksService: TasksService,

@@ -21,12 +21,15 @@
     </div>
 
 
-    <div class="bottom" *ngIf="!isAssign">
+    <div class="bottom" *ngIf="isAssign && !isComplete">
         <button class="but green-button" (click)="onCompleteButtonCLick()">Complete quest</button>
         <button class="but red-button" (click)="onCompleteButtonCLick()">Fail quest</button>
     </div>
-    <div class="bottom" *ngIf="isAssign">
+    <div class="bottom" *ngIf="!isAssign && !isComplete">
         <button class="but green-button" >Assign quest</button>
     </div>
+    <div class="bottom" *ngIf="isComplete">
+    </div>
+
 
 </div>
