@@ -145,5 +145,38 @@ export class MobileQuestDetailsComponent {
     this.getTaskById(id);
     this.getAllQuestsForUpdate("65a8717c934d8c082c765f6c");
   }
+
+  assignOnClick(): void {
+    const id = this.id as string;
+    console.log(id);
+    this.getTaskByIdForAssign(id);
+
+  }
+
+  private getTaskByIdForAssign(taskId: string): void {
+    this.tasksService.getById(taskId).subscribe((result) => {
+      console.log(result);
+      this.quest = result;
+
+      this.assignUserOnQuest("65a8717c934d8c082c765f6c", this.quest._id);
+    });
+  }
+
+  private assignUserOnQuest(user: string, taskId: string):void {
+    this.tasksService.addParticipant(taskId, user).subscribe((result) => {
+      console.log(result);
+      this.quest = result;
+
+      this.assignToUser(this.quest._id);
+
+    });
+  }
+
+  private assignToUser(taskId: string):void {
+    this.userService.createQuest("65a8717c934d8c082c765f6c", taskId).subscribe((result) => {
+      console.log(result);
+      this.user = result;
+    });
+  }
   
 }
