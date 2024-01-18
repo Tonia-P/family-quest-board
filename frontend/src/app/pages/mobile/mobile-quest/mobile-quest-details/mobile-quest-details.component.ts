@@ -97,6 +97,7 @@ export class MobileQuestDetailsComponent {
       updatedUser._id =  result._id;
       updatedUser.coins = result.coins;
       this.updateUserAfterComplete(updatedUser);
+      document.location.href = 'http://localhost:59816/mobile/home';
     });
   }
 
