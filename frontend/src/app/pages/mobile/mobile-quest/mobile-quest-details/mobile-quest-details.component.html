@@ -25,7 +25,7 @@
         <button class="but green-button" (click)="onCompleteButtonCLick()">Complete quest</button>
         <button class="but red-button" (click)="onCompleteButtonCLick()">Fail quest</button>
     </div>
-    <div class="bottom" *ngIf="!isAssign && !isComplete">
+    <div class="bottom" *ngIf="!isAssign && !isComplete" (click) = "assignOnClick()">
         <button class="but green-button" >Assign quest</button>
     </div>
     <div class="bottom" *ngIf="isComplete">
