@@ -4,9 +4,11 @@
     <h4>Welcome</h4>
     
     <h5>Available items</h5>
-    
-    <div *ngFor="let item of shopItems">
-        <button>{{ item.name }} </button>
+    <div class="list">
+
+        <div *ngFor="let item of shopItems" >
+            <app-mobile-shop-item [item]="item"/>
+        </div>
     </div>
 
 </div>

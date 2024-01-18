@@ -18,21 +18,24 @@ export class MobileShopComponent {
     name: 'Beta potion',
     description: 'AAAAhuihiuAAAAAAA',
     price: 200,
-    selected: false
+    selected: false,
+    image: 'console'
   },
   {
     _id: "7",
     name: 'Gamma potion',
     description: 'hhh',
     price: 400,
-    selected: false
+    selected: false,
+    image: 'console'
   }];
   @Input() selectedItem: Item = {
       _id: "2",
       name: 'Beta potion',
       description: 'AAAAhuihiuAAAAAAA',
       price: 200,
-      selected: false
+      selected: false,
+      image: 'console'
     
   }
 

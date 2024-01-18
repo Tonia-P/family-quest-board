@@ -2,8 +2,24 @@
     width: 100%;
     display: flex;
     padding: 0;
+    border-radius: 10px;
+    border: 2px solid rgb(216, 216, 216);
+    background-color: white;
+    p{
+        margin: 0;
+    }
     img{
         width: 70px;
         padding: 10px;
     }
+}
+
+.title{
+    margin-top: 10px;
+    font-weight: bold;
+
+}
+
+.items{
+    padding-left: 20px;
 }

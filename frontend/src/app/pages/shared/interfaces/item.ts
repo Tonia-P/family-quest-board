@@ -4,4 +4,5 @@ export interface Item {
     description?: string|null;
     price: number;
     selected: boolean;
+    image: string;
 }

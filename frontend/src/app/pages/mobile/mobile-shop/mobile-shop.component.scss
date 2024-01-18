@@ -1,3 +1,10 @@
 .container{
     margin-bottom: 75px;
 }
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}

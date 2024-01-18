@@ -21,7 +21,8 @@ export class TvShopDescriptionComponent {
     name: 'Alpha potion',
     description: 'AAAAAAAAAAA',
     price: 200,
-    selected: false
+    selected: false,
+    image: 'console'
   }
 
   constructor(

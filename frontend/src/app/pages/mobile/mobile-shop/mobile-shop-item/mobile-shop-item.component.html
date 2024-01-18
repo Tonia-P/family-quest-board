@@ -1,0 +1,10 @@
+<div class="main">
+    <img [src]="'../../../../../assets/shop-items/' + item.image + '.png'" alt="">
+    <p>{{ item.name }}</p>
+    <div class="price">
+        {{ item.price }}
+        <img src="../../../../../assets/currency/dia.png" class="dia">
+    </div>
+    
+    <button (click)="buyItem()" class="btn blue-button">Buy</button>
+</div>

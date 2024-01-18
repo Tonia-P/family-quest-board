@@ -13,7 +13,8 @@ export class TvShopItemslistComponent implements OnInit {
     name: 'Alpha potion',
     description: 'AAAAhuihiuAAAAAAA',
     price: 200,
-    selected: false
+    selected: false,
+    image: 'console'
   }]
   constructor() { }
 

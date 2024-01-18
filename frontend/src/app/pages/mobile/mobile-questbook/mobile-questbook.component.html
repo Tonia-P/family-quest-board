@@ -3,16 +3,16 @@
     
     <h4>Daily quests</h4>
     <div *ngFor="let quest of daily_quests">
-        <app-quest-item [quest]="quest"></app-quest-item>
+        <app-quest-item  [device]="'mobile'" [quest]="quest"></app-quest-item>
     </div>
     
     <h4>Weekly quests</h4>
     <div *ngFor="let quest of weekly_quests">
-        <app-quest-item [quest]="quest"></app-quest-item>
+        <app-quest-item  [device]="'mobile'" [quest]="quest"></app-quest-item>
     </div>
     
     <h4>One time quest</h4>
     <div *ngFor="let quest of onetime_quests">
-        <app-quest-item [quest]="quest"></app-quest-item>
+        <app-quest-item  [device]="'mobile'" [quest]="quest"></app-quest-item>
     </div>
 </div>
