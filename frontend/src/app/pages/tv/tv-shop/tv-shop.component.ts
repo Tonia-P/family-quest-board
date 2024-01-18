@@ -54,7 +54,7 @@ export class TvShopComponent implements OnInit {
     private socketService: SocketsService, private shopsService: ShopsService, private itemService: ItemsService,) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParamMap.subscribe(params => {
+    this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
       console.log(this.id)
     });
