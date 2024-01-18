@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { ShopsService } from 'src/app/global/services/item-shop/shop.service';
 import { Shop } from 'src/app/pages/shared/interfaces/shop';
 import { Item } from 'src/app/pages/shared/interfaces/item';
+
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ItemsService } from 'src/app/global/services/item-shop/item.service';
 
@@ -49,7 +50,7 @@ export class TvShopComponent implements OnInit {
   @Input() selected_id: string | null = null;
   @Input() itemid: string | null = null;
 
-  constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private tasksService: TasksService,
     private socketService: SocketsService, private shopsService: ShopsService, private itemService: ItemsService,) { }
 
   ngOnInit(): void {
@@ -57,22 +58,23 @@ export class TvShopComponent implements OnInit {
       this.id = params.get('id');
     });
     this.activatedRoute.queryParamMap.subscribe( params=>{
-      this.selected_id = params.get('selected')
-    }
-      )
+      this.selected_id = params.get('selected');
+    });
+    console.log(this.id);
+    console.log(this.selected_id);
     const shopId = this.id as string;
     this.getAllItemsOfShop(shopId);
     this.socketService.subscribe("Item_Broadcast", (data: any) => {
       console.log(data);
-      if(data.shopId !== shopId) {
-        console.log(data);
-        const shopid = data?.shopId;
-        document.location.href = 'http://localhost:59816/tv/shop/' + shopid;
+      const shopid = data?.shopId;
+      const itemId = data?.itemId;
+      if(shopId !== this.id){
+        this.router.navigate(['/tv/shop/' + shopid], {queryParams: {selected: itemId}});
       }
       else{
-        console.log(data);
         this.pingOtherDevicesForTask(data);
       }
+
     });
   }
 
@@ -85,8 +87,13 @@ export class TvShopComponent implements OnInit {
   }
 
   private pingOtherDevicesForTask(data: any): void {
-    console.log(data);
-    this.itemService.pingOtherDevicesForTask(data).subscribe((result) => {
+    const body = {
+      event: "Item_Selected",
+      message: data.itemId
+    };
+
+    console.log(body);
+    this.itemService.pingOtherDevicesForTask(body).subscribe((result) => {
       console.log(result);
     });
   }

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { ShopsService } from 'src/app/global/services/item-shop/shop.service';
@@ -10,6 +9,9 @@ import { User } from 'src/app/pages/shared/interfaces/user';
 import { UserModel } from 'src/app/global/models/users/user.model';
 import { ItemModel } from 'src/app/global/models/items/item.model';
 
+import { ActivatedRoute, Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-tv-menu',
@@ -18,7 +20,7 @@ import { ItemModel } from 'src/app/global/models/items/item.model';
 })
 export class TvMenuComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private tasksService: TasksService,
     private socketService: SocketsService, private shopsService: ShopsService, private userService: UsersService) { }
 
   ngOnInit(): void {
@@ -26,7 +28,8 @@ export class TvMenuComponent implements OnInit {
       console.log('ON HOME');
       console.log(data);
       const shopid = data?.shopId;
-      document.location.href = 'http://localhost:59816/tv/shop/' + shopid;
+      const itemId = data?.itemId;
+      this.router.navigate(['/tv/shop/' + shopid], {queryParams: {selected: itemId}});
     });
   }
 

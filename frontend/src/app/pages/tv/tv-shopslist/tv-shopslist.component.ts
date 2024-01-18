@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Slide } from './tv-shoplist.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { ShopsService } from 'src/app/global/services/item-shop/shop.service';
@@ -48,7 +48,7 @@ throw new Error('Method not implemented.');
 
   currentSlide = 0;
 
-  constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private tasksService: TasksService,
     private socketService: SocketsService, private shopsService: ShopsService) {}
 
   onPreviousClick() {
@@ -70,7 +70,8 @@ throw new Error('Method not implemented.');
       console.log('ON HOME');
       console.log(data);
       const shopid = data?.shopId;
-      document.location.href = 'http://localhost:59816/tv/shop/' + shopid;
+      const itemId = data?.itemId;
+      this.router.navigate(['/tv/shop/' + shopid], {queryParams: {selected: itemId}});
     });
   }
 

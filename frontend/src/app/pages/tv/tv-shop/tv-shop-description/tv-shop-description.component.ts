@@ -16,6 +16,9 @@ export class TvShopDescriptionComponent {
 
   @Input() id: string | null = null;
 
+  
+  @Input() selected_id: string | null = null;
+
   @Input() item: Item = {
     _id: "2",
     name: 'Alpha potion',
@@ -38,12 +41,19 @@ export class TvShopDescriptionComponent {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
+      console.log(this.id);
     });
+    this.activatedRoute.queryParamMap.subscribe( params=>{
+      this.selected_id = params.get('selected');
+    });
+    const storeId = this.id as string;
+    const itemId = this.selected_id as string;
+    console.log(this.id);
+    this.getItemById(storeId, itemId);
     this.socketService.subscribe("Item_Selected", (data: any) => {
       const shopId = this.id as string;
       this.getItemById(shopId, data);
     });
-    
   }
 
   private getItemById(shopId: string, itemId: string): void {
