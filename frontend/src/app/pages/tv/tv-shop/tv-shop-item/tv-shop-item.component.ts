@@ -15,7 +15,7 @@ export class TvShopItemComponent implements OnInit {
   
   @Input() item: Item = {
     _id: "2",
-    name: 'Alpha potion',
+    name: 'Alpha potion, Beta potion, Gamma potion, Kappa potion!',
     description: 'AAAAAAAAAAA',
     price: 200,
     selected: false,

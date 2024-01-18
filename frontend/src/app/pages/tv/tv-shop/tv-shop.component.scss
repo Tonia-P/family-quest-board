@@ -1,9 +1,25 @@
+@import '../../../global/theme/colors';
+
+
+.bgimg{
+  position: absolute;
+left: 50%;
+right: 50%;
+margin-left: -50vw;
+margin-right: -50vw;
+max-width: 100vw;
+width: 100vw;
+height: 100vh;
+z-index: -3;
+object-fit: cover;
+}
 .main-container{
   max-height: 90vh;
   height: fit-content;
   width: 90vw;
   margin-top: 7vh;
   overflow: hidden;
+  
 
   margin-right: 5vw;
   margin-left: 5vw;
@@ -13,8 +29,10 @@
   justify-content: space-between;
     .left, .right{
         width: 44vw;
-        height: 87vh;
-        background-color: bisque;
+        height: 80vh;
+        background-color: $main100;
+        border: 3px solid $main700;
+        border-radius: 15px;
 
         .control{
           width: 3vw;
@@ -34,4 +52,13 @@
     .left{
       width: 40vw;
     }
+}
+
+.shopname{
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  margin-left: 6vw;
+  text-shadow: -5px -5px 0 $main700, 5px -5px 0 $main700, -5px 5px 0 $main700, 5px 5px 0 $main700;
+
 }

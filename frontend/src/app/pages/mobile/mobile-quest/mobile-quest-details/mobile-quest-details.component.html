@@ -1,12 +1,26 @@
 <div class="container">
     <div>
+        
         <h3 class="title">Target </h3>
         
         <h5>{{ quest.title }}</h5>
+
+        <button class="red-button but"> See on TV
+            <img src="../../../../../assets/other/tvbroad.png" alt="">
+        </button>
+
+        
         
         <div>{{ quest.description }}</div>
+
         
-        <div>time</div>
+        <div class="difficulty">
+            <div >Difficulty</div>
+            <div *ngFor="let i of [].constructor(quest.difficulty)">
+                <img src="../../../../../assets/other/diff.png" />
+            </div>
+
+        </div>
         
         <h3 class="title"> Participants</h3>
         
