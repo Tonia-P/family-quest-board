@@ -16,6 +16,9 @@ import { UserModel } from 'src/app/global/models/users/user.model';
 })
 export class MobileShopComponent {
 
+  
+  @Input() successFlag: boolean = false;
+  @Input() failFlag: boolean = false;
   @Input() shopItems: Item[] = [{
     _id: "2",
     name: 'Beta potion',

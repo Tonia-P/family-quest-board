@@ -1,0 +1,33 @@
+.main-cont{
+    width: 100vw;
+    position: fixed;
+    bottom: 72px;
+    color: white;
+    font-size: larger;
+}
+
+.clear{
+    display: none;
+}
+
+.red-win{
+    background-color: rgb(201, 29, 29);
+}
+
+.green-win{
+    background-color: rgb(16, 161, 76);
+}
+
+.wrap{
+    display: flex;
+    justify-content: space-between;
+    >div{
+        padding-left: 10px;
+    }
+}
+
+button{
+    background-color: transparent;
+    border: 0;
+    color: white;
+}

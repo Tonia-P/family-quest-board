@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 import { TasksService } from 'src/app/global/services/tasks/tasks.service';
@@ -10,6 +10,10 @@ import { TaskModel } from 'src/app/global/models/tasks/task.model';
   styleUrls: ['./mobile-quest-add.component.scss']
 })
 export class MobileQuestAddComponent {
+
+  @Input() successFlag: boolean = false;
+  @Input() failFlag: boolean = false;
+  
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private tasksService: TasksService,
@@ -40,8 +44,12 @@ export class MobileQuestAddComponent {
 
       this.createTask(data);
       console.log('Form is valid:', this.form.value);
+      this.failFlag = false;
+      this.successFlag = true
      } else {
        console.log('Form is invalid:', this.form.errors);
+       this.successFlag = false;
+       this.failFlag = true;
      }
   }
 
