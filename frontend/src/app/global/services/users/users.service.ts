@@ -74,10 +74,10 @@ export class UsersService {
       .pipe(map(result => _.map(result, (t) => new TaskModel(t))));
   }
 
-  public getQuestsById(id: string, quest: string): Observable<UserModel> {
+  public getQuestsById(id: string, quest: string): Observable<TaskModel> {
     return this.http
-      .get<UserModel>(`${this.hostURl}/api/users/${id}/quests/${quest}`)
-      .pipe(map(result => new UserModel(result)));
+      .get<TaskModel>(`${this.hostURl}/api/users/${id}/quests/${quest}`)
+      .pipe(map(result => new TaskModel(result)));
   }
 
   public updateQuest(resource: string, questId: string, quest: any): Observable<TaskModel> {
