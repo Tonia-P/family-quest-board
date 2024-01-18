@@ -1,5 +1,5 @@
 <button class="container" (click)="onClick()">
-    <img src="../../../../../assets/shop-items/console.png" class="main_img" alt="Image description"/>
+    <img [src]="'../../../../../assets/shop-items/' + item.image + '.png'" class="main_img" alt="Image description"/>
     <div class="name">{{ item.name }}</div>
     <div class="price">
         <img src="../../../../../assets/currency/dia.png" alt="" />
