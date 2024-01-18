@@ -19,7 +19,7 @@ export class MobileShopComponent {
     description: 'AAAAhuihiuAAAAAAA',
     price: 200,
     selected: false,
-    image: 'console'
+    image: 'food'
   },
   {
     _id: "7",
@@ -35,7 +35,7 @@ export class MobileShopComponent {
       description: 'AAAAhuihiuAAAAAAA',
       price: 200,
       selected: false,
-      image: 'console'
+      image: 'food'
     
   }
 
