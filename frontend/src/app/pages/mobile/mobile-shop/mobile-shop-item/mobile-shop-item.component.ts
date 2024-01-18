@@ -111,7 +111,36 @@ export class MobileShopItemComponent {
     });
   }
 
+  private pingOtherDevicesForItemBroadcast(shopId: string, itemId: string): void {
+    const data = {
+        event: "Item_Broadcast",
+        message: {shopId: shopId, itemId: itemId}
+    };
+
+    console.log(data);
+    this.shopsService.pingOtherDevicesForTask(data).subscribe((result) => {
+      console.log(result);
+      this.pingOtherShopForDetails(shopId, itemId);
+    });
+  }
+  private pingOtherShopForDetails(shopId: string, itemId: string): void {
+    const data = {
+        event: "ShowItemDetails",
+        message: {shopId: shopId, itemId: itemId}
+    };
+
+    console.log(data);
+    this.shopsService.pingOtherDevicesForTask(data).subscribe((result) => {
+      console.log(result);
+    });
+  }
+
   showOnTV(): void{
-    
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.id = params.get('id');
+    });
+    const shopId: string = this.id as string; 
+    const itemId: any = this.item._id as string;
+    this.pingOtherDevicesForItemBroadcast(shopId, itemId);
   }
 }

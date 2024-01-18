@@ -1,5 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { TasksService } from 'src/app/global/services/tasks/tasks.service';
+import { ShopsService } from 'src/app/global/services/item-shop/shop.service';
+import { UsersService } from 'src/app/global/services/users/users.service';
+import { Shop } from 'src/app/pages/shared/interfaces/shop';
+import { Item } from 'src/app/pages/shared/interfaces/item';
+import { User } from 'src/app/pages/shared/interfaces/user';
+import { UserModel } from 'src/app/global/models/users/user.model';
+import { ItemModel } from 'src/app/global/models/items/item.model';
 import { Quest } from 'src/app/pages/shared/interfaces/quest';
+
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tv-questbook',
@@ -8,9 +19,17 @@ import { Quest } from 'src/app/pages/shared/interfaces/quest';
 })
 export class TvQuestbookComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private tasksService: TasksService,
+    private socketService: SocketsService, private shopsService: ShopsService, private userService: UsersService) { }
 
   ngOnInit(): void {
+    this.socketService.subscribe("Item_Broadcast", (data: any) => {
+      console.log('ON HOME');
+      console.log(data);
+      const shopid = data?.shopId;
+      const itemId = data?.itemId;
+      this.router.navigate(['/tv/shop/' + shopid], {queryParams: {selected: itemId}});
+    });
   }
 
 }

@@ -1,10 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { ShopsService } from 'src/app/global/services/item-shop/shop.service';
 import { Shop } from 'src/app/pages/shared/interfaces/shop';
 import { Item } from 'src/app/pages/shared/interfaces/item';
+
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { ItemsService } from 'src/app/global/services/item-shop/item.service';
 
 @Component({
   selector: 'app-tv-shop',
@@ -47,8 +50,8 @@ export class TvShopComponent implements OnInit {
   @Input() selected_id: string | null = null;
   @Input() itemid: string | null = null;
 
-  constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
-    private socketService: SocketsService, private shopsService: ShopsService) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private tasksService: TasksService,
+    private socketService: SocketsService, private shopsService: ShopsService, private itemService: ItemsService,) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParamMap.subscribe(params => {
@@ -56,12 +59,24 @@ export class TvShopComponent implements OnInit {
       console.log(this.id)
     });
     this.activatedRoute.queryParamMap.subscribe( params=>{
-      this.selected_id = params.get('selected')
-      console.log(this.selected_id)
-    }
-      )
+      this.selected_id = params.get('selected');
+    });
+    console.log(this.id);
+    console.log(this.selected_id);
     const shopId = this.id as string;
     this.getAllItemsOfShop(shopId);
+    this.socketService.subscribe("Item_Broadcast", (data: any) => {
+      console.log(data);
+      const shopid = data?.shopId;
+      const itemId = data?.itemId;
+      if(shopId !== this.id){
+        this.router.navigate(['/tv/shop/' + shopid], {queryParams: {selected: itemId}});
+      }
+      else{
+        this.pingOtherDevicesForTask(data);
+      }
+
+    });
   }
 
   private getAllItemsOfShop(shopId: string): void {
@@ -69,6 +84,18 @@ export class TvShopComponent implements OnInit {
       console.log(result);
       this.shopItems = result;
 
+    });
+  }
+
+  private pingOtherDevicesForTask(data: any): void {
+    const body = {
+      event: "Item_Selected",
+      message: data.itemId
+    };
+
+    console.log(body);
+    this.itemService.pingOtherDevicesForTask(body).subscribe((result) => {
+      console.log(result);
     });
   }
 
