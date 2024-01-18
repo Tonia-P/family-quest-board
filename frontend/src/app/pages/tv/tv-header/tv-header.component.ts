@@ -21,11 +21,11 @@ export class TvHeaderComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit(): void {
-    this.getUserById("657c66904bff912c74f817d6");
+    this.getUserById("65a8717c934d8c082c765f6c");
     console.log("user loaded");
     this.coins = this.user.coins;
     this.socketService.subscribe("coins_update", (data: any) => {
-      this.getUserById("657c66904bff912c74f817d6");
+      this.getUserById("65a8717c934d8c082c765f6c");
       this.coins = this.user.coins;
     });
   }

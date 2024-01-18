@@ -26,13 +26,13 @@ export class MobileHomepageComponent {
   ) { }
 
   ngOnInit(): void {
-    this.getAllDailyQuests("657c66904bff912c74f817d6");
-    this.getAllCompletedQuests("657c66904bff912c74f817d6");
+    this.getAllDailyQuests("65a8717c934d8c082c765f6c");
+    this.getAllCompletedQuests("65a8717c934d8c082c765f6c");
 
     // Susbcribe to socket event and set callback
     this.socketService.subscribe("tasks_update", (data: any) => {
-      this.getAllDailyQuests("657c66904bff912c74f817d6");
-      this.getAllCompletedQuests("657c66904bff912c74f817d6");
+      this.getAllDailyQuests("65a8717c934d8c082c765f6c");
+      this.getAllCompletedQuests("65a8717c934d8c082c765f6c");
     });
 
   }
