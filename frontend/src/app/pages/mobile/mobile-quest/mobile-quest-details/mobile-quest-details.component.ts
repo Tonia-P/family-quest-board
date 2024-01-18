@@ -16,6 +16,8 @@ export class MobileQuestDetailsComponent {
 
   @Input() id: string | null = null;
   @Input() isAssign: boolean = false;
+  @Input() isComplete: boolean = false;
+
   @Input() quests: TaskModel[] = [];
   @Input() quest: Quest = {
     _id: "9",
