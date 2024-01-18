@@ -7,11 +7,13 @@ import { MobileQuestDetailsComponent } from './mobile-quest/mobile-quest-details
 import { MobileQuestAddComponent } from './mobile-quest/mobile-quest-add/mobile-quest-add.component';
 import { MobileShopComponent } from './mobile-shop/mobile-shop.component';
 import { MobileShopslistComponent } from './mobile-shopslist/mobile-shopslist.component';
+import { MobileQuestbookComponent } from './mobile-questbook/mobile-questbook.component';
 
 const routes: Routes = [
   { path: '', component: MobileComponent, children: [
     { path: 'home', component: MobileHomepageComponent},
     { path: 'quest', component: MobileQuestComponent},
+    { path: 'questbook', component: MobileQuestbookComponent},
     { path: 'view/:id', component: MobileQuestDetailsComponent},
     { path: 'add', component: MobileQuestAddComponent},
     { path: 'shoplist', component: MobileShopslistComponent},
