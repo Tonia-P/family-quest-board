@@ -20,4 +20,8 @@ export class MobileShopItemComponent {
   buyItem(): void{
 
   }
+
+  showOnTV(): void{
+    
+  }
 }
