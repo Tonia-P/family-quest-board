@@ -64,7 +64,7 @@ export class MobileQuestDetailsComponent {
       console.log(result);
       this.quest = result;
       console.log("COMPLETED: " + result.completed);
-      if(result.completed === true){
+      if(result && result.completed === true){
         console.log("COMPLETED");
         this.isComplete = true;
         this.isAssign = false;
@@ -89,8 +89,16 @@ export class MobileQuestDetailsComponent {
     this.userService.getById(id).subscribe((result) => {
       console.log(result);
       this.user = result;
-      console.log(this.user.name);
-      const currentQuest = this.quest.participants.includes(this.user.name);
+      const taskId = this.id as string;
+      this.checkQuestAssignmentReq(taskId, this.user.name);
+    });
+  }
+
+  private checkQuestAssignmentReq(id: string, userName: string) :void{
+    this.tasksService.getById(id).subscribe((result) => {
+      console.log(result);
+      this.quest = result;
+      const currentQuest = this.quest.participants.includes(userName);
       console.log(currentQuest);
       if(currentQuest === true){
         this.isAssign = true;
@@ -153,6 +161,31 @@ export class MobileQuestDetailsComponent {
 
   }
 
+  onFailButtonClick(): void {
+    const id = this.id as string;
+    console.log(id);
+    if(this.isAssign == true){
+      this.getTaskById(id);
+      this.failQuest(this.quest._id, "65a8717c934d8c082c765f6c");
+    }
+  }
+
+  private failQuest(id: string, userId: string): void {
+    this.userService.deleteQuest(userId, id).subscribe(result =>{
+      console.log(result);
+
+      this.removeUserFromQuest(id, "mother");
+
+    });
+  }
+
+  private removeUserFromQuest(id: string, userName: string): void {
+    this.tasksService.deleteParticipant(id, userName).subscribe(result =>{
+      console.log(result);
+      document.location.href = 'http://localhost:59816/mobile/home';
+    });
+  }
+
   private getTaskByIdForAssign(taskId: string): void {
     this.tasksService.getById(taskId).subscribe((result) => {
       console.log(result);
@@ -176,7 +209,10 @@ export class MobileQuestDetailsComponent {
     this.userService.createQuest("65a8717c934d8c082c765f6c", taskId).subscribe((result) => {
       console.log(result);
       this.user = result;
+      document.location.href = 'http://localhost:59816/mobile/home';
     });
   }
+
+  
   
 }

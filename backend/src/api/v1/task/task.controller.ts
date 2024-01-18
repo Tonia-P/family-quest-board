@@ -27,7 +27,7 @@ export class TaskController extends ResourceController<ITask>{
             .get('/:id/participants', this.getTaskParticipants)
             .get('/:id/participant/:participantId', this.getTaskParticipantsByName)
             .put('/:id/participant/:participantId', this.updateTaskParticipants)
-            .delete('/:id/participant/:participantId', this.deleteTaskParticipants)
+            .delete('/:id/participant/:participantName', this.deleteTaskParticipants)
             .post('/pingOtherDevices', this.pingOtherDevicesForTask);
 
         return router;

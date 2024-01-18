@@ -89,8 +89,8 @@ export class TasksService {
       .pipe(map(result => new TaskModel(result)));
   }
 
-  public deleteParticipant(id: string, participantId: string): Observable<void> {
-    return this.http.delete<void>(`${this.hostURl}/api/tasks/${id}/participants/${participantId}`);
+  public deleteParticipant(id: string, participantName: string): Observable<void> {
+    return this.http.delete<void>(`${this.hostURl}/api/tasks/${id}/participant/${participantName}`);
   }
 
 }
