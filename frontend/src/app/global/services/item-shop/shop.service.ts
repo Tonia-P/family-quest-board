@@ -63,12 +63,12 @@ export class ShopsService {
       .pipe(map(result => new ItemModel(result)));
   }
 
-  public updateItem(resource: string, item: ItemModel): Observable<ItemModel> {
+  public updateItem(resource: string, itemId: string, item: any): Observable<ItemModel> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
     return this.http
-      .put<ItemModel>(`${this.hostURl}/api/shop/${resource}/items/${item._id}`, item, {headers})
+      .put<ItemModel>(`${this.hostURl}/api/shop/${resource}/items/${itemId}`, item, {headers})
       .pipe(map(result => new ItemModel(result)));
   }
 

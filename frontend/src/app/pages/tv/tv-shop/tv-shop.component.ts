@@ -20,7 +20,8 @@ export class TvShopComponent implements OnInit {
     description: 'AAAAhuihiuAAAAAAA',
     price: 200,
     selected: false,
-    image: 'console'
+    image: 'console',
+    sold: false
   },
   {
     _id: "7",
@@ -28,7 +29,8 @@ export class TvShopComponent implements OnInit {
     description: 'hhh',
     price: 400,
     selected: false,
-    image: 'console'
+    image: 'console',
+    sold: false
   }];
   @Input() selectedItem: Item = {
       _id: "2",
@@ -36,7 +38,8 @@ export class TvShopComponent implements OnInit {
       description: 'AAAAhuihiuAAAAAAA',
       price: 200,
       selected: false,
-      image: 'console'
+      image: 'console',
+      sold: false
     
   }
   @Input() id: string | null = null;

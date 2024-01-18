@@ -19,7 +19,8 @@ export class TvShopItemComponent implements OnInit {
     description: 'AAAAAAAAAAA',
     price: 200,
     selected: false,
-    image: 'console'
+    image: 'console',
+    sold: false
   }
   @Output() selectedFlag: EventEmitter<Item> =   new EventEmitter();
 
