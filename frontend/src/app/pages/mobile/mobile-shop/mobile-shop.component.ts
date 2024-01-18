@@ -71,9 +71,10 @@ export class MobileShopComponent {
       this.id = params.get('id');
     });
     const stringId: string = this.id as string; 
+    this.getItemByIdforSell(stringId);
   }
 
-  private getItemById(shopId: string, itemId: string): void {
+  private getItemByIdForSell(shopId: string, itemId: string): void {
     this.shopsService.getItemById(shopId, itemId).subscribe((result) => {
       console.log(result);
       this.selectedItem = result;
