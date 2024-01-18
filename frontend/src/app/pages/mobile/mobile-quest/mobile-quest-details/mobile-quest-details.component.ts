@@ -7,6 +7,7 @@ import { Quest } from 'src/app/pages/shared/interfaces/quest';
 import { Location } from '@angular/common';
 import { TaskModel } from 'src/app/global/models/tasks/task.model';
 import { UserModel } from 'src/app/global/models/users/user.model';
+import { User } from 'src/app/pages/shared/interfaces/user';
 
 @Component({
   selector: 'app-mobile-quest-details',
@@ -18,6 +19,8 @@ export class MobileQuestDetailsComponent {
   @Input() id: string | null = null;
   @Input() isAssign: boolean = false;
   @Input() isComplete: boolean = false;
+
+  @Input() user: User = {_id: '', name: '', coins: 0, quests: [], parent: false};
 
   @Input() quests: TaskModel[] = [];
   @Input() quest: Quest = {
@@ -45,14 +48,30 @@ export class MobileQuestDetailsComponent {
       this.id = params.get('id');
     });
     const stringId: string = this.id as string; 
-    this.getTaskById(stringId);
+    this.getTaskByIdCheckComplete(stringId);
+  }
+
+  private getTaskById(taskId: string): void {
+    this.userService.getQuestsById("65a8717c934d8c082c765f6c", taskId).subscribe((result) => {
+      console.log(result);
+      this.quest = result;
+    });
   }
 
 
-  private getTaskById(taskId: string): void {
-    this.tasksService.getById(taskId).subscribe((result) => {
+  private getTaskByIdCheckComplete(taskId: string): void {
+    this.userService.getQuestsById("65a8717c934d8c082c765f6c", taskId).subscribe((result) => {
       console.log(result);
       this.quest = result;
+      console.log("COMPLETED: " + result.completed);
+      if(result.completed === true){
+        console.log("COMPLETED");
+        this.isComplete = true;
+        this.isAssign = false;
+      }
+      else{
+        this.getUserForCheckAssign("65a8717c934d8c082c765f6c");
+      }
     });
   }
 
@@ -63,6 +82,22 @@ export class MobileQuestDetailsComponent {
     this.userService.updateQuest(userId, taskId, task).subscribe((result) => {
       console.log(result);
       this.quest = result;
+    });
+  }
+
+  private getUserForCheckAssign(id: string) :void{
+    this.userService.getById(id).subscribe((result) => {
+      console.log(result);
+      this.user = result;
+      console.log(this.user.name);
+      const currentQuest = this.quest.participants.includes(this.user.name);
+      console.log(currentQuest);
+      if(currentQuest === true){
+        this.isAssign = true;
+      }
+      else{
+        this.isAssign = false;
+      }
     });
   }
 
@@ -99,6 +134,7 @@ export class MobileQuestDetailsComponent {
       updatedUser._id =  result._id;
       updatedUser.coins = result.coins;
       this.updateUserAfterComplete(updatedUser);
+      document.location.href = 'http://localhost:59816/mobile/home';
     });
   }
 
