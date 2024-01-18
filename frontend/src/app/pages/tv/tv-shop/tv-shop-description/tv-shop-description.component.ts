@@ -42,11 +42,8 @@ export class TvShopDescriptionComponent {
     this.socketService.subscribe("Item_Selected", (data: any) => {
       const shopId = this.id as string;
       this.getItemById(shopId, data);
-      
     });
-    this.socketService.subscribe("ItemSold", (data: any) => {
-
-    });
+    
   }
 
   private getItemById(shopId: string, itemId: string): void {

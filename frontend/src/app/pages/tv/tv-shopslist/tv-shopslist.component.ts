@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Slide } from './tv-shoplist.interface';
+import { ActivatedRoute } from '@angular/router';
+import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
+import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { ShopsService } from 'src/app/global/services/item-shop/shop.service';
 import { Shop } from 'src/app/pages/shared/interfaces/shop';
 import { Item } from 'src/app/pages/shared/interfaces/item';
@@ -45,7 +48,8 @@ throw new Error('Method not implemented.');
 
   currentSlide = 0;
 
-  constructor(private shopsService: ShopsService) {}
+  constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
+    private socketService: SocketsService, private shopsService: ShopsService) {}
 
   onPreviousClick() {
     const previous = this.currentSlide - 1;
@@ -62,6 +66,12 @@ throw new Error('Method not implemented.');
   ngOnInit() {
     this.preloadImages(); // for the demo
     this.getAllShops(); // retrieves all the shops
+    this.socketService.subscribe("Item_Broadcast", (data: any) => {
+      console.log('ON HOME');
+      console.log(data);
+      const shopid = data?.shopId;
+      document.location.href = 'http://localhost:59816/tv/shop/' + shopid;
+    });
   }
 
   preloadImages() {

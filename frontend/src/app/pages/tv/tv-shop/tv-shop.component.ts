@@ -6,6 +6,8 @@ import { ShopsService } from 'src/app/global/services/item-shop/shop.service';
 import { Shop } from 'src/app/pages/shared/interfaces/shop';
 import { Item } from 'src/app/pages/shared/interfaces/item';
 
+import { ItemsService } from 'src/app/global/services/item-shop/item.service';
+
 @Component({
   selector: 'app-tv-shop',
   templateUrl: './tv-shop.component.html',
@@ -46,7 +48,7 @@ export class TvShopComponent implements OnInit {
   @Input() itemid: string | null = null;
 
   constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
-    private socketService: SocketsService, private shopsService: ShopsService) { }
+    private socketService: SocketsService, private shopsService: ShopsService, private itemService: ItemsService,) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -54,6 +56,18 @@ export class TvShopComponent implements OnInit {
     });
     const shopId = this.id as string;
     this.getAllItemsOfShop(shopId);
+    this.socketService.subscribe("Item_Broadcast", (data: any) => {
+      console.log(data);
+      if(data.shopId !== shopId) {
+        console.log(data);
+        const shopid = data?.shopId;
+        document.location.href = 'http://localhost:59816/tv/shop/' + shopid;
+      }
+      else{
+        console.log(data);
+        this.pingOtherDevicesForTask(data);
+      }
+    });
   }
 
   private getAllItemsOfShop(shopId: string): void {
@@ -61,6 +75,13 @@ export class TvShopComponent implements OnInit {
       console.log(result);
       this.shopItems = result;
 
+    });
+  }
+
+  private pingOtherDevicesForTask(data: any): void {
+    console.log(data);
+    this.itemService.pingOtherDevicesForTask(data).subscribe((result) => {
+      console.log(result);
     });
   }
 
