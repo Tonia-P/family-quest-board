@@ -64,7 +64,7 @@ export class UsersService {
       'Content-Type': 'application/json',
     });
     return this.http
-      .post<UserModel>(`${this.hostURl}/api/users/${resource}/quests/${quest}`, quest, {headers})
+      .post<UserModel>(`${this.hostURl}/api/users/${resource}/quests/${quest}`, {headers})
       .pipe(map(result => new UserModel(result)));
   }
 

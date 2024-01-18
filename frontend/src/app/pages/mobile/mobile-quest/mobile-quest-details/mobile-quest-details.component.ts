@@ -64,7 +64,7 @@ export class MobileQuestDetailsComponent {
       console.log(result);
       this.quest = result;
       console.log("COMPLETED: " + result.completed);
-      if(result.completed === true){
+      if(result && result.completed === true){
         console.log("COMPLETED");
         this.isComplete = true;
         this.isAssign = false;
@@ -89,8 +89,16 @@ export class MobileQuestDetailsComponent {
     this.userService.getById(id).subscribe((result) => {
       console.log(result);
       this.user = result;
-      console.log(this.user.name);
-      const currentQuest = this.quest.participants.includes(this.user.name);
+      const taskId = this.id as string;
+      this.checkQuestAssignmentReq(taskId, this.user.name);
+    });
+  }
+
+  private checkQuestAssignmentReq(id: string, userName: string) :void{
+    this.tasksService.getById(id).subscribe((result) => {
+      console.log(result);
+      this.quest = result;
+      const currentQuest = this.quest.participants.includes(userName);
       console.log(currentQuest);
       if(currentQuest === true){
         this.isAssign = true;
@@ -176,7 +184,10 @@ export class MobileQuestDetailsComponent {
     this.userService.createQuest("65a8717c934d8c082c765f6c", taskId).subscribe((result) => {
       console.log(result);
       this.user = result;
+      document.location.href = 'http://localhost:59816/mobile/home';
     });
   }
+
+  
   
 }
