@@ -12,7 +12,7 @@ const routes: Routes = [
         { path: 'home', component: TvMenuComponent },
     { path: 'questbook',component: TvQuestbookComponent},
     { path: 'shopslist', component: TvShopslistComponent},
-    { path: 'shop/:id', component: TvShopComponent},
+    { path: 'shop/:id?:selected?', component: TvShopComponent},
     { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ]}
     

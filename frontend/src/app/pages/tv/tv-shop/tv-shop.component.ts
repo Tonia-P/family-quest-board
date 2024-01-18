@@ -21,7 +21,7 @@ export class TvShopComponent implements OnInit {
     10% for ${3600 / 10} minutes.`,
     price: 200,
     selected: false,
-    image: 'console',
+    image: 'food',
     sold: false
   },
   {
@@ -44,6 +44,7 @@ export class TvShopComponent implements OnInit {
     
   }
   @Input() id: string | null = null;
+  @Input() selected_id: string | null = null;
   @Input() itemid: string | null = null;
 
   constructor(private activatedRoute: ActivatedRoute, private tasksService: TasksService,
@@ -53,6 +54,10 @@ export class TvShopComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
+    this.activatedRoute.queryParamMap.subscribe( params=>{
+      this.selected_id = params.get('selected')
+    }
+      )
     const shopId = this.id as string;
     this.getAllItemsOfShop(shopId);
   }
