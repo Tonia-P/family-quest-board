@@ -161,6 +161,31 @@ export class MobileQuestDetailsComponent {
 
   }
 
+  onFailButtonClick(): void {
+    const id = this.id as string;
+    console.log(id);
+    if(this.isAssign == true){
+      this.getTaskById(id);
+      this.failQuest(this.quest._id, "65a8717c934d8c082c765f6c");
+    }
+  }
+
+  private failQuest(id: string, userId: string): void {
+    this.userService.deleteQuest(userId, id).subscribe(result =>{
+      console.log(result);
+
+      this.removeUserFromQuest(id, "mother");
+
+    });
+  }
+
+  private removeUserFromQuest(id: string, userName: string): void {
+    this.tasksService.deleteParticipant(id, userName).subscribe(result =>{
+      console.log(result);
+      document.location.href = 'http://localhost:59816/mobile/home';
+    });
+  }
+
   private getTaskByIdForAssign(taskId: string): void {
     this.tasksService.getById(taskId).subscribe((result) => {
       console.log(result);

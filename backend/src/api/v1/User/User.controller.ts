@@ -179,7 +179,7 @@ export class UserController extends ResourceController<IUser>{
 
             const updatedUser = await this.update(req.params.id, req.body.blacklist, req, res);
 
-            return res.status(StatusCodes.OK).json(user);
+            return res.status(StatusCodes.OK).json(updatedUser);
 
         } catch (error: any) {
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
