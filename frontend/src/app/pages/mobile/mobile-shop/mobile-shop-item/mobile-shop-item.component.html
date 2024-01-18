@@ -1,10 +1,15 @@
 <div class="main">
-    <img [src]="'../../../../../assets/shop-items/' + item.image + '.png'" alt="">
+    <img [src]="'../../../../../assets/shop-items/' + item.image + '.png'" alt="" class="itemimage">
     <p>{{ item.name }}</p>
     <div class="price">
         {{ item.price }}
         <img src="../../../../../assets/currency/dia.png" class="dia">
     </div>
     
-    <button (click)="buyItem()" class="btn blue-button">Buy</button>
+    <div class="but-set">
+        <button (click)="buyItem()" class="btn blue-button">Buy</button>
+        <button (click)="showOnTV()" class="btn red-button">
+            <img src="../../../../../assets/other/tvbroad.png" alt="">
+        </button>
+    </div>
 </div>
