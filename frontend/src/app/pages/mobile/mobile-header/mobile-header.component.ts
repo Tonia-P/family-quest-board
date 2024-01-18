@@ -20,10 +20,10 @@ export class MobileHeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUserById("657c66904bff912c74f817d6");
+    this.getUserById("65a8717c934d8c082c765f6c");
     console.log("user loaded");
     this.socketService.subscribe("User_update", (data: any) => {
-      this.getUserById("657c66904bff912c74f817d6");
+      this.getUserById("65a8717c934d8c082c765f6c");
     });
   }
 

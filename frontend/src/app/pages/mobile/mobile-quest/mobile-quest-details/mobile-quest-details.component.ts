@@ -6,6 +6,7 @@ import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { Quest } from 'src/app/pages/shared/interfaces/quest';
 import { Location } from '@angular/common';
 import { TaskModel } from 'src/app/global/models/tasks/task.model';
+import { UserModel } from 'src/app/global/models/users/user.model';
 
 @Component({
   selector: 'app-mobile-quest-details',
@@ -68,9 +69,7 @@ export class MobileQuestDetailsComponent {
   private getAllQuestsForUpdate(id: string): void{
     this.userService.getAllQuests(id).subscribe((result) => {
       console.log(result);
-      console.log(this.quest);
       this.quests = result.filter(task => task.title === this.quest.title);
-      console.log(this.quests);
       if(this.quests){
         console.log("here");
         const questId = this.quests[0]._id;
@@ -78,10 +77,29 @@ export class MobileQuestDetailsComponent {
           completed: true
         }
 
-        this.completeTask("657c66904bff912c74f817d6", questId, body);
+        this.completeTask("65a8717c934d8c082c765f6c", questId, body);
+        this.getUserAfterComplete("65a8717c934d8c082c765f6c");
       }
     });
-    this.location.back();
+  }
+
+  private updateUserAfterComplete(data: any){
+    console.log(data);
+    this.userService.update(data).subscribe((result) =>{
+      console.log(result);
+    });
+  }
+
+  private getUserAfterComplete(id: any){
+    this.userService.getById(id).subscribe((result) =>{
+      console.log(result);
+      result.coins += this.quests[0].reward;
+      console.log(result);
+      const updatedUser = new UserModel();
+      updatedUser._id =  result._id;
+      updatedUser.coins = result.coins;
+      this.updateUserAfterComplete(updatedUser);
+    });
   }
 
 
@@ -89,7 +107,7 @@ export class MobileQuestDetailsComponent {
     const id = this.id as string;
     console.log(id);
     this.getTaskById(id);
-    this.getAllQuestsForUpdate("657c66904bff912c74f817d6");
+    this.getAllQuestsForUpdate("65a8717c934d8c082c765f6c");
   }
   
 }
