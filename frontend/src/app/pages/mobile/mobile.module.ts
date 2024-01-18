@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MobileShopslistItemComponent } from './mobile-shopslist/mobile-shopslist-item/mobile-shopslist-item.component';
 import { MobileQuestbookComponent } from './mobile-questbook/mobile-questbook.component';
 import { MobileShopItemComponent } from './mobile-shop/mobile-shop-item/mobile-shop-item.component';
+import { MobileMessageComponent } from './mobile-message/mobile-message.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MobileShopItemComponent } from './mobile-shop/mobile-shop-item/mobile-s
     MobileQuestAddComponent,
     MobileShopslistItemComponent,
     MobileQuestbookComponent,
-    MobileShopItemComponent
+    MobileShopItemComponent,
+    MobileMessageComponent
   ],
   imports: [
     CommonModule,

@@ -42,8 +42,13 @@
             <div class="bottom">
                 <app-game-button type="submit" [label]="'Add new quest'"/>
             </div>
-           </form>
-    </div>
-    
-
-</div>
+         </form>
+         
+      </div>
+   </div>
+   <div *ngIf="successFlag">
+      <app-mobile-message [label]="'Form is valid'" [color]="'green'" />
+   </div>
+   <div *ngIf="failFlag">
+      <app-mobile-message [label]="'Form is invalid'" [color]="'red'" />
+   </div>
