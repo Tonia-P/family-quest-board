@@ -17,19 +17,79 @@ export class TvShopComponent implements OnInit {
   @Input() shopItems: Item[] = [{
     _id: "2",
     name: 'Beta potion',
-    description: 'AAAAhuihiuAAAAAAA',
+    description: `This is a Beta Potion which will increase your character's strength by
+    10% for ${3600 / 10} minutes.`,
     price: 200,
     selected: false,
     image: 'console'
   },
   {
-    _id: "7",
-    name: 'Gamma potion',
-    description: 'hhh',
-    price: 400,
+    _id: "2",
+    name: 'Alpha potion, Beta potion, Gamma potion, Kappa potion!',
+    description: 'Kappa Keepo Kappo',
+    price: 200,
     selected: false,
     image: 'console'
-  }];
+  },
+  {
+    _id: "2",
+    name: 'Alpha potion, Beta potion, Gamma potion, Kappa potion!',
+    description: 'This item can be used to combine other items into one.',
+    price: 200,
+    selected: false,
+    image: 'console'
+  },
+  {
+    _id: "2",
+    name: 'Beta potion',
+    description: `This is a Beta Potion which will increase your character's strength by
+    10% for ${3600 / 10} minutes.`,
+    price: 200,
+    selected: false,
+    image: 'console'
+  },
+  {
+    _id: "2",
+    name: 'Alpha potion, Beta potion, Gamma potion, Kappa potion!',
+    description: 'Kappa Keepo Kappo',
+    price: 200,
+    selected: false,
+    image: 'console'
+  },
+  {
+    _id: "2",
+    name: 'Alpha potion, Beta potion, Gamma potion, Kappa potion!',
+    description: 'This item can be used to combine other items into one.',
+    price: 200,
+    selected: false,
+    image: 'console'
+  },
+  {
+    _id: "2",
+    name: 'Beta potion',
+    description: `This is a Beta Potion which will increase your character's strength by
+    10% for ${3600 / 10} minutes.`,
+    price: 200,
+    selected: false,
+    image: 'console'
+  },
+  {
+    _id: "2",
+    name: 'Alpha potion, Beta potion, Gamma potion, Kappa potion!',
+    description: 'Kappa Keepo Kappo',
+    price: 200,
+    selected: false,
+    image: 'console'
+  },
+  {
+    _id: "2",
+    name: 'Alpha potion, Beta potion, Gamma potion, Kappa potion!',
+    description: 'This item can be used to combine other items into one.',
+    price: 200,
+    selected: false,
+    image: 'console'
+  },
+];
   @Input() selectedItem: Item = {
       _id: "2",
       name: 'Beta potion',

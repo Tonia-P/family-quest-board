@@ -1,7 +1,13 @@
 .container{
     display: grid;
   gap: 20px 30px;
-  grid-template-columns: auto auto auto;
+  grid-template-columns:  12vw 12vw 12vw ;
   padding: 10px;
   width: 100%;
+  overflow: scroll;
+  max-height: 78vh;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
