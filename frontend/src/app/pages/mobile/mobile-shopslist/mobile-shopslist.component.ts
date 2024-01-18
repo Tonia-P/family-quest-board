@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Shop } from '../../shared/interfaces/shop';
 
 @Component({
   selector: 'app-mobile-shopslist',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class MobileShopslistComponent {
 
+  @Input() shops: Shop[] = [{
+    _id: "2",
+    items: [],
+    owner: "Daddy",
+    name: "Kebab House"
+  }];
 }
