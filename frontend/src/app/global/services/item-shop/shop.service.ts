@@ -63,13 +63,13 @@ export class ShopsService {
       .pipe(map(result => new ItemModel(result)));
   }
 
-  public updateItem(resource: string, item: ItemModel): Observable<ShopModel> {
+  public updateItem(resource: string, item: ItemModel): Observable<ItemModel> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
     return this.http
-      .put<ShopModel>(`${this.hostURl}/api/shop/${resource}/items/${item._id}`, item, {headers})
-      .pipe(map(result => new ShopModel(result)));
+      .put<ItemModel>(`${this.hostURl}/api/shop/${resource}/items/${item._id}`, item, {headers})
+      .pipe(map(result => new ItemModel(result)));
   }
 
   public deleteItem(id: string, item: string): Observable<void> {
