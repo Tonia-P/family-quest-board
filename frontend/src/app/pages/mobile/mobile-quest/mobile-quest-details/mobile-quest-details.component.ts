@@ -213,6 +213,25 @@ export class MobileQuestDetailsComponent {
     });
   }
 
+
+  private BroadcastOnTv(taskId: string): void {
+    const data = {
+        event: "BroadcastOnTv",
+        message: {taskId: taskId}
+    };
+
+    console.log(data);
+    this.tasksService.pingOtherDevicesForTask(data).subscribe((result) => {
+      console.log(result);
+    });
+  }
+
+  onClickShowTv(): void {
+    const taskId = this.id as string;
+    this.BroadcastOnTv(taskId);
+  }
+
+
   
   
 }

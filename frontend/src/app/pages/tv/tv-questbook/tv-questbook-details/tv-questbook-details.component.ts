@@ -3,6 +3,7 @@ import { GameButtonComponent } from 'src/app/pages/shared/game-button/game-butto
 import { SocketsService } from 'src/app/global/services/sockets/sockets.service';
 import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { Quest } from 'src/app/pages/shared/interfaces/quest';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-tv-questbook-details',
   templateUrl: './tv-questbook-details.component.html',
@@ -14,8 +15,11 @@ export class TvQuestbookDetailsComponent implements OnInit {
   
   constructor(
     private tasksService: TasksService,
-    private socketService: SocketsService
+    private socketService: SocketsService,
+    private activatedRoute: ActivatedRoute,
   ) { }
+
+  @Input() selected_id: string | null = null;
 
   @Input() quest: Quest = {
     _id: "9",
@@ -36,6 +40,12 @@ export class TvQuestbookDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllTasks();
+    this.activatedRoute.queryParamMap.subscribe( params=>{
+      this.selected_id = params.get('selected');
+    });
+    const data = this.selected_id as string;
+    console.log(data);
+    this.getTaskById(data);
 
     // Susbcribe to socket event and set callback
     this.socketService.subscribe("tasks_update", (data: any) => {

@@ -22,13 +22,50 @@ export class TvQuestbookComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private tasksService: TasksService,
     private socketService: SocketsService, private shopsService: ShopsService, private userService: UsersService) { }
 
+    @Input() quest: Quest = {
+      _id: "9",
+      title: "Kapp Kapp",
+      type: "daily",
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing el
+      sed do eiusmod tempor incididunt ut labore et dolore magna al
+      la.`,
+      difficulty: 1,
+      reward: 50,
+      participants:[
+        'daughter',
+        'son'
+      ],
+      deadline: "2024-3-1",
+      completed: false
+    }
+
   ngOnInit(): void {
+    console.log(window.location.pathname);
+    this.socketService.subscribe("BroadcastOnTv", (data: any) => {
+      console.log('ON HOME');
+      console.log(data);
+      const taskId = data?.taskId;
+      this.pingOtherDevicesForTask(taskId);
+    });
     this.socketService.subscribe("Item_Broadcast", (data: any) => {
       console.log('ON HOME');
       console.log(data);
       const shopid = data?.shopId;
       const itemId = data?.itemId;
       this.router.navigate(['/tv/shop/' + shopid], {queryParams: {selected: itemId}});
+    });
+    
+  }
+
+  private pingOtherDevicesForTask(taskId: string): void {
+    const data = {
+        event: "Task_Selected",
+        message: taskId
+    };
+
+    console.log(data);
+    this.tasksService.pingOtherDevicesForTask(data).subscribe((result) => {
+      console.log(result);
     });
   }
 

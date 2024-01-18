@@ -6,6 +6,7 @@ import { TasksService } from 'src/app/global/services/tasks/tasks.service';
 import { ShopsService } from 'src/app/global/services/item-shop/shop.service';
 import { Shop } from 'src/app/pages/shared/interfaces/shop';
 import { Item } from 'src/app/pages/shared/interfaces/item';
+import { Quest } from 'src/app/pages/shared/interfaces/quest';
 
 @Component({
   selector: 'app-tv-shopslist',
@@ -21,6 +22,7 @@ throw new Error('Method not implemented.');
 }
 
   @Input() shops: Shop[] = [];
+
 
   @Input() slides: Slide[] = [
     {
@@ -72,6 +74,14 @@ throw new Error('Method not implemented.');
       const shopid = data?.shopId;
       const itemId = data?.itemId;
       this.router.navigate(['/tv/shop/' + shopid], {queryParams: {selected: itemId}});
+    });
+
+    this.socketService.subscribe("BroadcastOnTv", (data: any) => {
+
+      console.log('ON HOME');
+      console.log(data);
+      const taskId = data?.taskId;
+      this.router.navigate(['/tv/questbook/'], {queryParams: {selected: taskId}});
     });
   }
 

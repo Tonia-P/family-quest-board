@@ -77,6 +77,14 @@ export class TvShopComponent implements OnInit {
       }
 
     });
+
+
+    this.socketService.subscribe("BroadcastOnTv", (data: any) => {
+      console.log('ON HOME');
+      console.log(data);
+      const taskId = data?.taskId;
+      this.router.navigate(['/tv/questbook/'], {queryParams: {selected: taskId}});
+    });
   }
 
   private getAllItemsOfShop(shopId: string): void {
