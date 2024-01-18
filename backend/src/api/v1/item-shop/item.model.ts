@@ -9,6 +9,7 @@ export interface IItem extends Document {
   description: string;
   price: number;
   selected: boolean;
+  sold: boolean;
 }
 
 // ------------------------------------------
@@ -19,7 +20,8 @@ const itemSchema = new Schema(
     description: {type: String, required: true},
     image: {type: String, required: true},
     price: {type: Number, required: true},
-    selected: {type: Boolean, required: true}
+    selected: {type: Boolean, required: true},
+    sold: {type: Boolean, required: true}
   },
   { ...DefaultSchemaOptions }
 );

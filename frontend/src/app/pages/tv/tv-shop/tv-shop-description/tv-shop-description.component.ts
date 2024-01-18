@@ -22,7 +22,8 @@ export class TvShopDescriptionComponent {
     description: 'AAAAAAAAAAA',
     price: 200,
     selected: false,
-    image: 'console'
+    image: 'console',
+    sold: false
   }
 
   constructor(

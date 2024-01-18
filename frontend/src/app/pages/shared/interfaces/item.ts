@@ -5,4 +5,5 @@ export interface Item {
     price: number;
     selected: boolean;
     image: string;
+    sold: boolean;
 }

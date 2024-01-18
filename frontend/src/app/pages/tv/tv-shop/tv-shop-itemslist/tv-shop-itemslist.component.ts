@@ -14,7 +14,8 @@ export class TvShopItemslistComponent implements OnInit {
     description: 'AAAAhuihiuAAAAAAA',
     price: 200,
     selected: false,
-    image: 'console'
+    image: 'console',
+    sold: false
   }]
   constructor() { }
 
