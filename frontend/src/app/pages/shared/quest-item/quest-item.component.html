@@ -4,6 +4,12 @@
             {{ quest.title }}
 
         </div>
+        <div *ngIf="device === 'table'">
+            <button class="brod" (click) = "onClickShowTv()"> 
+                <img src="../../../../assets/other/tvbroad.png" alt="">
+            </button>
+
+        </div>
     </div>
 
     <button class="info" [ngClass]="device" (click)="goToView()"> 

@@ -6,7 +6,7 @@ export const config = {
 
   // host domain options
   protocol: process.env.PROTOCOL || 'http',
-  host: process.env.HOST || "localhost",
+  host: process.env.HOST || "139.91.80.162",
   exposedPort: process.env.EXPOSED_PORT,
   port: process.env.PORT, // !Do NOT change this option, because it is used by reverse-proxy
 

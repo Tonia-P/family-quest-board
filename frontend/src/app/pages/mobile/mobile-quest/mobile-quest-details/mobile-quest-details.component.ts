@@ -142,7 +142,7 @@ export class MobileQuestDetailsComponent {
       updatedUser._id =  result._id;
       updatedUser.coins = result.coins;
       this.updateUserAfterComplete(updatedUser);
-      document.location.href = 'http://localhost:59816/mobile/home';
+      document.location.href = 'http://139.91.80.162:59816/mobile/home';
     });
   }
 
@@ -182,7 +182,7 @@ export class MobileQuestDetailsComponent {
   private removeUserFromQuest(id: string, userName: string): void {
     this.tasksService.deleteParticipant(id, userName).subscribe(result =>{
       console.log(result);
-      document.location.href = 'http://localhost:59816/mobile/home';
+      document.location.href = 'http://139.91.80.162:59816/mobile/home';
     });
   }
 
@@ -209,7 +209,7 @@ export class MobileQuestDetailsComponent {
     this.userService.createQuest("65a8717c934d8c082c765f6c", taskId).subscribe((result) => {
       console.log(result);
       this.user = result;
-      document.location.href = 'http://localhost:59816/mobile/home';
+      document.location.href = 'http://139.91.80.162:59816/mobile/home';
     });
   }
 

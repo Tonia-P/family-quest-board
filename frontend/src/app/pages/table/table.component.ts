@@ -66,15 +66,14 @@ export class TableComponent {
     });
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[]>): void {
     if(event.container.id == event.previousContainer.id) {}
     else{
-
       const id = event.container.id as string;
       const userId = event.previousContainer.id as string;
       console.log(id);
       console.log(userId);
-      this.getTaskByIdForAssign(id, userId);
+      this.getTaskByIdForAssign(userId, id);
     }
       
 }

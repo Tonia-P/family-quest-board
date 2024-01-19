@@ -46,12 +46,12 @@ export class MobileQuestAddComponent {
       console.log('Form is valid:', this.form.value);
       this.failFlag = false;
       this.successFlag = true
-      document.location.href = 'http://localhost:59816/mobile/home';
+      document.location.href = 'http://139.91.80.162:59816/mobile/home';
      } else {
        console.log('Form is invalid:', this.form.errors);
        this.successFlag = false;
        this.failFlag = true;
-       document.location.href = 'http://localhost:59816/mobile/home';
+       document.location.href = 'http://139.91.80.162:59816/mobile/home';
      }
   }
 

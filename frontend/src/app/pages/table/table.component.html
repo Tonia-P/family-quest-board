@@ -3,7 +3,7 @@
     <div class="list">
         <div cdkDropList class="list">
             <div *ngFor="let quest of quests">
-              <div cdkDropList [id]="quest.id" [ngClass]="quest.id" [cdkDropListConnectedTo]="['65a8717c934d8c082c765f6c', '659ef17c9e75e14967c28780', '65a6f99e816cf967dc350eb2']" (cdkDropListDropped)="drop($event)">
+              <div cdkDropList [id]='quest._id' [cdkDropListConnectedTo]="['65a8717c934d8c082c765f6c', '659ef17c9e75e14967c28780', '65a6f99e816cf967dc350eb2']" (cdkDropListDropped)="drop($event)">
                   <app-quest-item [quest]="quest" [device]="'table'" cdkDrag ></app-quest-item> 
               </div>
             </div>

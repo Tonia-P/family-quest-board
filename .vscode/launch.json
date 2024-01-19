@@ -20,7 +20,7 @@
                 "DB_ROOT_PASSWORD": "i7iPL2ABWzC0J3euvEaKATnU8D9DKZCg",
                 "DB_NAME": "ami-fullstack",
                 "ENVIRONMENT": "development",
-                "EXPOSED_PORT": "8081",
+                "EXPOSED_PORT": "8080",
                 "PORT": "8080",
             }
         }
