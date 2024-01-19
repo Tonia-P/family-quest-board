@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 import { TaskModel } from 'src/app/global/models/tasks/task.model';
 import { UserModel } from 'src/app/global/models/users/user.model';
 import { User } from 'src/app/pages/shared/interfaces/user';
+import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';  
 
 @Component({
   selector: 'app-table',
@@ -65,18 +66,25 @@ export class TableComponent {
     });
   }
 
-  onUserDrop(){
-    const id = this.id as string;
-    console.log(id);
-    this.getTaskByIdForAssign(id);
-  }
+  drop(event: CdkDragDrop<string[]>) {
+    if(event.container.id == event.previousContainer.id) {}
+    else{
 
-  private getTaskByIdForAssign(taskId: string): void {
+      const id = event.container.id as string;
+      const userId = event.previousContainer.id as string;
+      console.log(id);
+      console.log(userId);
+      this.getTaskByIdForAssign(id, userId);
+    }
+      
+}
+
+  private getTaskByIdForAssign(taskId: string, userId: string): void {
     this.tasksService.getById(taskId).subscribe((result) => {
       console.log(result);
       this.quest = result;
 
-      this.assignUserOnQuest("65a8717c934d8c082c765f6c", this.quest._id);
+      this.assignUserOnQuest(userId, this.quest._id);
     });
   }
 
@@ -85,13 +93,13 @@ export class TableComponent {
       console.log(result);
       this.quest = result;
 
-      this.assignToUser(this.quest._id);
+      this.assignToUser(this.quest._id, user);
 
     });
   }
 
-  private assignToUser(taskId: string):void {
-    this.userService.createQuest("65a8717c934d8c082c765f6c", taskId).subscribe((result) => {
+  private assignToUser(taskId: string, userId: string):void {
+    this.userService.createQuest(userId, taskId).subscribe((result) => {
       console.log(result);
       this.user = result;
     });

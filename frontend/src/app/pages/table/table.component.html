@@ -1,1 +1,30 @@
-<p>table works!</p>
+
+<div class="container">
+    <div class="list">
+        <div cdkDropList class="list">
+            <div *ngFor="let quest of quests">
+              <div cdkDropList [id]="quest.id" [ngClass]="quest.id" [cdkDropListConnectedTo]="['65a8717c934d8c082c765f6c', '659ef17c9e75e14967c28780', '65a6f99e816cf967dc350eb2']" (cdkDropListDropped)="drop($event)">
+                  <app-quest-item [quest]="quest" [device]="'table'" cdkDrag ></app-quest-item> 
+              </div>
+            </div>
+
+        </div>
+        
+        <div cdkDropList id="659ef17c9e75e14967c28780" cdkDropListConnectedTo="list-1" (cdkDropListDropped)="drop($event)">
+            <app-table-user [id]="'659ef17c9e75e14967c28780'"/>
+
+        </div>
+        <div cdkDropList id="65a8717c934d8c082c765f6c" cdkDropListConnectedTo="list-1" (cdkDropListDropped)="drop($event)">
+            <app-table-user [id]="'65a8717c934d8c082c765f6c'"/> 
+
+        </div>
+        <div cdkDropList id="65a6f99e816cf967dc350eb2" cdkDropListConnectedTo="list-1" (cdkDropListDropped)="drop($event)">
+            <app-table-user [id]="'65a6f99e816cf967dc350eb2'"/>
+            
+        </div>
+
+        
+    </div>
+    
+    <!-- ...additional items... -->
+</div>

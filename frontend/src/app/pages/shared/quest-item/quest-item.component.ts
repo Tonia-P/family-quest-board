@@ -37,7 +37,10 @@ export class QuestItemComponent {
   }
 
   goToView() {
-    this.router.navigate(['/mobile/view', this.quest._id], { relativeTo: this.activatedRoute, queryParams: { id: this.quest._id } });
+    if (!(this.device === "table")){
+      this.router.navigate(['/' + this.device + '/view', this.quest._id], { relativeTo: this.activatedRoute, queryParams: { id: this.quest._id } });
+
+    }
    }
 
 }

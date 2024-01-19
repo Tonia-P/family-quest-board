@@ -1,0 +1,29 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.list{
+    display: grid;
+    gap: 20px 30px;
+    grid-template-columns:  auto auto auto ;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.sonpos{
+    display: fixed;
+    top: 30vh;
+    left: 30px;
+}
+
+.userscont{
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    justify-content: space-around;
+}
